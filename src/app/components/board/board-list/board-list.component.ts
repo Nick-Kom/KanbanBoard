@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component,Input} from '@angular/core';
+import {Board} from "../board";
 
 @Component({
     selector: 'board-list',
@@ -6,5 +7,5 @@ import {Component} from '@angular/core';
     styleUrls: ['board-list.less']
 })
 export class BoardListComponent  {
-
+    @Input() boards:Board[];
 }

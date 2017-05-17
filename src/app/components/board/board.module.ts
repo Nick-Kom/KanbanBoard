@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from "@angular/material";
 import {BoardComponent} from './board.component';
 import {BoardListModule} from "./board-list/board-list.module";
+import {BoardService} from "./board.service";
 
 
 @NgModule({
@@ -14,9 +15,9 @@ import {BoardListModule} from "./board-list/board-list.module";
     declarations: [
         BoardComponent
     ],
-/*    providers: [
+    providers: [
         BoardService
-    ],*/
+    ],
     exports: [
         BoardComponent
     ]

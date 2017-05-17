@@ -1,3 +1,14 @@
-<div>
-<column-item></column-item>
+<div class="row">
+<column-item
+        *ngFor=" let column of columns" [column]="column">
+</column-item>
+    <div class="col-md">
+        <div mdTooltip="Add new column">
+            <button class="btn-add"
+                    md-mini-fab
+                    (click)="createColumn(column)">
+                <md-icon class="btn-add-icon">add</md-icon>
+            </button>
+        </div>
+    </div>
 </div>

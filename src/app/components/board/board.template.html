@@ -1,2 +1,16 @@
-<a md-fab routerLink="."><md-icon>add</md-icon></a>
-<board-list></board-list>
+<div class="kanban-title" >
+    <div class="row">
+        <div class="col-md-3"><h2>KanbanBoard</h2></div>
+        <div class="col-md-1">
+            <div mdTooltip="Add new board">
+                <button class="btn-add"
+                        md-mini-fab
+                        (click)="createBoard(board)">
+
+                    <md-icon class="btn-add-icon" >add</md-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <board-list [boards]="boards"></board-list>
+</div>

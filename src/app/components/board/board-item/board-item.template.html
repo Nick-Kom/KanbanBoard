@@ -1,9 +1,13 @@
-<div class="board">
-    <div class="board-title">
-
+<div class="board" >
+    <md-card class="board-title">
         <div class="row justify-content-between">
             <div class="col-md-4">
-                <h2>Board 1</h2>
+
+                <md-input-container *ngIf="board.title==''">
+                    <input mdInput placeholder="Board title" value={{board.title}}>
+                </md-input-container>
+                <h2 class="board-title-h2"
+                        *ngIf="board.title">{{board.title}}</h2>
             </div>
             <div class="col-md-3">
                 <div class="board-title-buttons">
@@ -16,13 +20,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <column></column>
-</div>
-
-<div class="board">
-    <div class="board-title">
-        <h2>Board 2</h2>
-    </div>
+    </md-card>
     <column></column>
 </div>

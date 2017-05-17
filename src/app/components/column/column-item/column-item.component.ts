@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Column} from "../column";
 
 @Component({
     selector: 'column-item',
@@ -6,5 +7,5 @@ import {Component} from '@angular/core';
     styleUrls: ['column-item.less']
 })
 export class ColumnItemComponent  {
-
+    @Input() column: Column[]
 }

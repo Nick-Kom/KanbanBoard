@@ -1,4 +1,9 @@
 import {Component} from '@angular/core';
+import {Column} from "./column";
+import {ColumnService} from "./column.service";
+
+
+
 
 @Component({
     selector: 'column',
@@ -6,4 +11,14 @@ import {Component} from '@angular/core';
     styleUrls: ['column.less']
 })
 export class ColumnComponent {
+    columns: Column[];
+
+    constructor(private columnService: ColumnService) {
+    }
+
+    ngOnInit() {
+        this.columns =  this.columnService.getDataColumns();
+    }
+
+
 }

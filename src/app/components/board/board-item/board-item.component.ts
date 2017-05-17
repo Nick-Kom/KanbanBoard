@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Board} from "../board";
+import {Column} from "../../column/column";
 
 @Component({
     selector: 'board-item',
@@ -6,5 +8,5 @@ import {Component} from '@angular/core';
     styleUrls: ['board-item.less']
 })
 export class BoardItemComponent  {
-
+    @Input() board: Board;
 }
