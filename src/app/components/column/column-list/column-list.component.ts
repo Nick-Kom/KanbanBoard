@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Column} from "../column";
 import {ColumnService} from "../column.service";
+import {Board} from "../../board/board";
 
 @Component({
     selector: 'column-list',
@@ -9,14 +10,12 @@ import {ColumnService} from "../column.service";
 })
 export class ColumnListComponent {
 
-    @Input() columns: Column[]
-
-    constructor(private columnService: ColumnService) {
-    }
+    @Input()columns: Column[];
+    @Output() onCreateColumn = new EventEmitter;
 
     createColumn() {
-        let column = new Column(new Date().valueOf(), '');
-        this.columnService.createColumn(column);
+        this.onCreateColumn.emit();
     }
+
 
 }

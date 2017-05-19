@@ -1,17 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Board} from "./board";
 import {BoardService} from "./board.service";
 
-const BOARDS: Board[] = [
-    {
-        id: 1,
-        title: "Board for work"
-    },
-    {
-        id: 2,
-        title: "Board for study"
-    }
-];
 
 @Component({
     selector: 'board',
@@ -26,11 +16,11 @@ export class BoardComponent {
     }
 
     ngOnInit() {
-        this.boards = BOARDS;
+        this.boards = this.boardService.getDataBoards();
     }
 
     createBoard() {
         let board = new Board(new Date().valueOf(), '');
-        this.boards.push(board);
+        this.boardService.createBoard(board);
     }
 }

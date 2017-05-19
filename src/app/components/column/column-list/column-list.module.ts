@@ -3,17 +3,21 @@ import {BrowserModule}  from '@angular/platform-browser';
 import {MaterialModule} from "@angular/material";
 import {ColumnListComponent} from "./column-list.component";
 import {ColumnItemModule} from "../column-item/column-item.module";
-
-
+import {ColumnService} from "../column.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     imports: [
         BrowserModule,
         ColumnItemModule,
-        MaterialModule
+        MaterialModule,
+        BrowserAnimationsModule
     ],
     declarations: [
         ColumnListComponent
+    ],
+    providers: [
+        ColumnService
     ],
     exports: [
         ColumnListComponent

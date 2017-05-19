@@ -1,20 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Column} from "./column";
-
-const COLUMNS: Column[] = [
-    {
-        id: 1,
-        title: "Plan"
-    },
-    {
-        id: 2,
-        title: "Doing"
-    },
-    {
-        id: 3,
-        title: "Done"
-    }
-];
+import {COLUMNS} from "../mocks";
 
 @Injectable()
 export class ColumnService {
@@ -23,11 +9,8 @@ export class ColumnService {
     getDataColumns(): Column[] {
         return this.dataColumns;
     }
-
-    createColumn(column:Column) {
+    createColumn(column: Column) {
         this.dataColumns.push(column);
-
+        console.log(this.dataColumns)
     }
-
-
 }
