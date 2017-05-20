@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Column} from "../column";
-import {ColumnService} from "../column.service";
-import {Board} from "../../board/board";
 
 @Component({
     selector: 'column-list',

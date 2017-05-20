@@ -2,16 +2,22 @@
     <md-card class="board-title">
         <div class="row justify-content-between">
             <div class="col-md-4">
-
-                <md-input-container *ngIf="board.title==''">
-                    <input mdInput placeholder="Board title" value={{board.title}}>
+                <md-input-container
+                        *ngIf="!changeTitle || board.title==''">
+                    <input class="board-title-input"
+                           mdInput
+                           autofocus="autofocus"
+                           placeholder="Board title"
+                           value={{board.title}}>
                 </md-input-container>
                 <h2 class="board-title-h2"
-                        *ngIf="board.title">{{board.title}}</h2>
+                    *ngIf="changeTitle">
+                    {{board.title}}
+                </h2>
             </div>
             <div class="col-md-3">
                 <div class="board-title-buttons">
-                    <button md-button>
+                    <button md-button (click)="changeBoardTitle(board)">
                         <md-icon>create</md-icon>
                     </button>
                     <button md-button>

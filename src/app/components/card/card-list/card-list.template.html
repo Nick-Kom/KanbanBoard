@@ -1,0 +1,12 @@
+<div>
+    <card-item class="card-item"
+               (onClearCard)="clearCardTitle($event)"
+               *ngFor=" let card of cards" [card]="card">
+    </card-item>
+    <div class="add-card">
+        <p class="btn-add"
+           (click)="createCard()">
+            add card
+        </p>
+    </div>
+</div>

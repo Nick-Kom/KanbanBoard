@@ -19,10 +19,10 @@ export class ColumnComponent {
         this.columns = this.columnService.getDataColumns().filter(obj => obj.boardId === this.board.id);
     }
 
-    createColumn(board: Board) {
+    createColumn() {
         let newColumn = new Column(new Date().valueOf(), '', this.board.id);
         this.columns.push(newColumn)
-        //this.columnService.createColumn(newColumn);
+        this.columnService.createColumn(newColumn);
 
     }
 

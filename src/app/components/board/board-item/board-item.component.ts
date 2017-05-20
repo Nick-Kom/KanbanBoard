@@ -6,6 +6,12 @@ import {Board} from "../board";
     templateUrl: 'board-item.template.html',
     styleUrls: ['board-item.less']
 })
-export class BoardItemComponent  {
+export class BoardItemComponent {
     @Input() board: Board;
+    changeTitle: boolean=true;
+
+    changeBoardTitle() {
+        this.changeTitle=false;
+    }
+
 }

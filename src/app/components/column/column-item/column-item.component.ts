@@ -7,5 +7,9 @@ import {Column} from "../column";
     styleUrls: ['column-item.less']
 })
 export class ColumnItemComponent  {
-    @Input() column: Column[]
+    @Input() column: Column
+
+    changeColumnTitle(){
+
+    }
 }
