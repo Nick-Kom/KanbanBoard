@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {Board} from "./board";
 import {BoardService} from "./board.service";
+import {MdDialog} from "@angular/material";
+import {AlertConfirmDeleting} from "../modal/alert-confirm/alert-confirm-deleting";
 
 
 @Component({
@@ -21,6 +23,14 @@ export class BoardComponent {
 
     createBoard() {
         let board = new Board(new Date().valueOf(), '');
+        //this.boards.push(board);
         this.boardService.createBoard(board);
     }
+
+    deleteBoard(board: Board) {
+
+        this.boardService.deleteBoard(board);
+        console.log(this.boards)
+    }
+
 }

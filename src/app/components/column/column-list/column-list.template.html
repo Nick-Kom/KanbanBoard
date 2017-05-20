@@ -1,7 +1,32 @@
 <div class=" columns-space">
     <column-item
-            *ngFor=" let column of columns" [column]="column">
+            *ngFor=" let column of columns"
+            [column]="column"
+            (onDeleteColumn)="deleteColumn($event)">
     </column-item>
+    <div class="column-width" *ngIf="newColumn">
+        <div class="column-background">
+            <md-input-container>
+                <input
+                        mdInput
+                        autofocus="autofocus"
+                        placeholder="Column title"
+                        value="">
+            </md-input-container>
+            <div class="btn-row">
+                <button class="btn-row-save"
+                        md-button
+                        (click)="saveColumn()">
+                    <md-icon class="save-icon">save</md-icon>
+                </button>
+                <button class="btn-row-clear"
+                        md-button
+                        (click)="clearCardTitle(card)">
+                    <md-icon class="clear-icon">clear</md-icon>
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="add-position">
         <div mdTooltip="Add new column">
             <button class="btn-add"

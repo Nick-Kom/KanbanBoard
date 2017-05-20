@@ -13,4 +13,8 @@ export class ColumnService {
         this.dataColumns.push(column);
         console.log(this.dataColumns)
     }
+    deleteColumn(column: Column) {
+        let indexToRemove = this.dataColumns.indexOf(column);
+        this.dataColumns.splice(indexToRemove, 1);
+    }
 }

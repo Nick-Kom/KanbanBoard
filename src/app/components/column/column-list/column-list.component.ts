@@ -7,12 +7,26 @@ import {Column} from "../column";
     styleUrls: ['column-list.less', '../../../styles/btn.less']
 })
 export class ColumnListComponent {
-
-    @Input()columns: Column[];
-    @Output() onCreateColumn = new EventEmitter;
+    @Input() columns: Column[];
+    @Output() onSaveColumn = new EventEmitter;
+    @Output() onDeleteColumn = new EventEmitter;
+    newColumn: boolean = false;
 
     createColumn() {
-        this.onCreateColumn.emit();
+        this.newColumn = true;
+    }
+
+    saveColumn() {
+        this.newColumn = false;
+        this.onSaveColumn.emit();
+    }
+
+    clearCardTitle() {
+        this.newColumn = false;
+    }
+
+    deleteColumn(column: Column) {
+        this.onDeleteColumn.emit(column);
     }
 
 

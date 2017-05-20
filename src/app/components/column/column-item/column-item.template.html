@@ -1,9 +1,42 @@
 <div class="column-width">
-    <div class="column-background" *ngIf="column">
-        <div class="column-title" (click)="changeColumnTitle()">
+    <div class="column-background">
+        <div class="column-title"
+             *ngIf="!changeColumn || !column.title"
+             [mdMenuTriggerFor]="menu">
             <h3>{{column.title}}</h3>
         </div>
-            <card [column]="column"></card>
+        <div *ngIf="changeColumn ">
+            <md-input-container>
+                <input
+                        mdInput
+                        autofocus="autofocus"
+                        placeholder="Column title"
+                        value="{{column.title}}">
+            </md-input-container>
+            <div class="btn-row">
+                <button class="btn-row-save"
+                        md-button
+                        (click)="saveColumn()">
+                    <md-icon class="save-icon">save</md-icon>
+                </button>
+                <button class="btn-row-clear"
+                        md-button
+                        (click)="clearCardTitle(card)">
+                    <md-icon class="clear-icon">clear</md-icon>
+                </button>
+            </div>
+        </div>
+        <md-menu #menu="mdMenu">
+            <button md-menu-item (click)="changeColumnTitle()">
+                <md-icon>create</md-icon>
+                <span>Rename</span>
+            </button>
+            <button md-menu-item (click)="deleteColumn(column)">
+                <md-icon>delete</md-icon>
+                <span>Delete</span>
+            </button>
+        </md-menu>
+        <card [column]="column"></card>
     </div>
 </div>
 

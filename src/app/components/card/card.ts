@@ -1,6 +1,12 @@
 export class Card {
     constructor(public id: number,
                 public title: string,
-                public columnId: number) {
+                public columnId: number,
+                public description:string,
+                public startDate:string,
+                public dueDate:string,
+                public startTime:string,
+                public dueTime:string,
+    ) {
     }
 }

@@ -3,6 +3,7 @@ import {BrowserModule}  from '@angular/platform-browser';
 import {MaterialModule} from "@angular/material";
 import {BoardItemComponent} from "./board-item.component";
 import {ColumnModule} from "../../column/column.module";
+import {AlertConfirmDeleting} from "../../modal/alert-confirm/alert-confirm-deleting";
 
 
 @NgModule({
@@ -12,8 +13,10 @@ import {ColumnModule} from "../../column/column.module";
         MaterialModule
     ],
     declarations: [
-        BoardItemComponent
+        BoardItemComponent,
+        AlertConfirmDeleting
     ],
+    entryComponents: [AlertConfirmDeleting],
     exports: [
         BoardItemComponent
     ]

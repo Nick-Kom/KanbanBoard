@@ -1,4 +1,6 @@
 <div>
-<board-item  *ngFor="let board of boards" [board]="board">
+<board-item  *ngFor="let board of boards"
+             [board]="board"
+             (onDeleteBoard)="deleteBoard($event)">
 </board-item>
 </div>

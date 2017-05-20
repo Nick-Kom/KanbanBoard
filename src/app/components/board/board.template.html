@@ -11,5 +11,5 @@
             </div>
         </div>
     </div>
-    <board-list [boards]="boards"></board-list>
+    <board-list [boards]="boards" (onDeleteBoard)="deleteBoard($event)"></board-list>
 </div>

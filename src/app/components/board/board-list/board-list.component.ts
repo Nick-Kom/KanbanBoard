@@ -1,4 +1,4 @@
-import {Component,Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Board} from "../board";
 
 @Component({
@@ -6,6 +6,13 @@ import {Board} from "../board";
     templateUrl: 'board-list.template.html',
     styleUrls: ['board-list.less']
 })
-export class BoardListComponent  {
-    @Input() boards:Board[];
+export class BoardListComponent {
+    @Input() boards: Board[];
+    @Output() onDeleteBoard: EventEmitter<Board> = new EventEmitter();
+
+
+    deleteBoard(board: Board) {
+        this.onDeleteBoard.emit(board);
+    }
+
 }

@@ -50,26 +50,71 @@ export const CARDS: Card[] = [
     {
         id: 1,
         title: "Lorem  sdsad swewsadf sdfsfd",
-        columnId: 1
+        columnId: 1,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
     },
     {
         id: 2,
         title: "Lorem  sdsad wweewwww  sdfsfddffffffffffffffffffffffffffffffffffffffffffffffffffsdfsdfsdfsdfsdfsdfsdfsdfsfds",
-        columnId: 1
+        columnId: 1,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
     },
     {
         id: 3,
         title: "Lorem  sdsad sadfsadf sdfsfd",
-        columnId: 2
+        columnId: 2,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
     },
     {
         id: 4,
         title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
-        columnId: 2
+        columnId: 2,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
     },
     {
         id: 5,
         title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
-        columnId: 3
+        columnId: 3,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
+    },
+    {
+        id: 6,
+        title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
+        columnId: 6,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
+    },
+    {
+        id: 6,
+        title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
+        columnId: 5,
+        description:'',
+        startDate:'',
+        dueDate:'',
+        startTime:'',
+        dueTime:''
     }
 ];

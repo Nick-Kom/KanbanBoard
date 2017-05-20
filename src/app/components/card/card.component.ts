@@ -19,9 +19,10 @@ export class CardComponent {
         this.cards = this.cardService.getDataCard().filter(obj => obj.columnId === this.column.id);
     }
 
-    createCard() {
-        let newCard = new Card(new Date().valueOf(), '', this.column.id);
+    saveCardTitle() {
+        let newCard = new Card(new Date().valueOf(), '', this.column.id, 'a', 'b', 'c', 'd', 'e');
         this.cards.push(newCard);
         this.cardService.createCard(newCard);
+        console.log(this.cards)
     }
 }

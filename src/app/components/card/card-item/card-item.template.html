@@ -1,22 +1,5 @@
-<md-card class="mdcard-style" *ngIf="card.title">
+<md-card class="mdcard-style">
     <p>{{card.title}}</p>
 </md-card>
-<md-card class="mdcard-style"
-         *ngIf="card.title==''">
-    <input class="card-title-input"
-           autofocus="autofocus"
-           value={{card.title}}>
-    <div class="btns">
-        <button class="btn-save-clear"
-                md-button
-                (click)="saveCardTitle()">
-            <md-icon class="save-icon">save</md-icon>
-        </button>
-        <button class="btn-save-clear"
-                md-button
-                (click)="clearCardTitle(card)">
-            <md-icon class="clear-icon">clear</md-icon>
-        </button>
-    </div>
-</md-card>
+
 

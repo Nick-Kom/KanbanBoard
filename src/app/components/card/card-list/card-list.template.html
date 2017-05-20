@@ -1,8 +1,25 @@
 <div>
     <card-item class="card-item"
-               (onClearCard)="clearCardTitle($event)"
                *ngFor=" let card of cards" [card]="card">
     </card-item>
+    <md-card class="mdcard-style"
+             *ngIf="newCard">
+        <input class="card-title-input"
+               autofocus="autofocus"
+               value="">
+        <div class="btn-row">
+            <button class="btn-row-save"
+                    md-button
+                    (click)="saveCardTitle()">
+                <md-icon class="save-icon">save</md-icon>
+            </button>
+            <button class="btn-row-clear"
+                    md-button
+                    (click)="clearCardTitle(card)">
+                <md-icon class="clear-icon">clear</md-icon>
+            </button>
+        </div>
+    </md-card>
     <div class="add-card">
         <p class="btn-add"
            (click)="createCard()">

@@ -13,4 +13,11 @@ export class BoardService {
         this.dataBoards.push(board);
         console.log(this.dataBoards)
     }
+    deleteBoard(board: Board) {
+
+        let indexToRemove = this.dataBoards.indexOf(board);
+        this.dataBoards.splice(indexToRemove, 1);
+        //this.dataBoards.filter(boardId => boardId.id !== board.id);
+        console.log(this.dataBoards)
+    }
 }

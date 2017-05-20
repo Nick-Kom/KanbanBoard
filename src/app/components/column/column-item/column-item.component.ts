@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Column} from "../column";
 
 @Component({
@@ -6,10 +6,21 @@ import {Column} from "../column";
     templateUrl: 'column-item.template.html',
     styleUrls: ['column-item.less']
 })
-export class ColumnItemComponent  {
+export class ColumnItemComponent {
     @Input() column: Column
+    @Output() onDeleteColumn = new EventEmitter;
+    changeColumn: boolean = false;
 
-    changeColumnTitle(){
-
+    changeColumnTitle() {
+        this.changeColumn = true;
     }
+
+    clearCardTitle() {
+        this.changeColumn = false;
+    }
+
+    deleteColumn(column: Column) {
+        this.onDeleteColumn.emit(column);
+    }
+
 }

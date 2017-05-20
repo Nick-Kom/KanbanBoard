@@ -7,16 +7,6 @@ import {Card} from "../card";
     styleUrls: ['card-item.less']
 })
 export class CardItemComponent {
-    @Input() card: Card
-
-    @Output() onClearCard = new EventEmitter;
-
-    clearCardTitle(card:Card) {
-        this.onClearCard.emit(card);
-    }
-
-    saveCardTitle() {
-
-    }
+    @Input() card: Card;
 
 }

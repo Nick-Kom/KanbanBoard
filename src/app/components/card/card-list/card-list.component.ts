@@ -8,19 +8,24 @@ import {CardService} from "../card.service";
     styleUrls: ['card-list.less']
 })
 export class CardListComponent {
-
     @Input() cards: Card[];
-    @Output() onCreateCard = new EventEmitter;
+    @Output() onSaveCard = new EventEmitter;
+    newCard: boolean = false;
 
-    constructor(private cardService: CardService) { }
-
-    createCard() {
-        this.onCreateCard.emit();
+    constructor(private cardService: CardService) {
     }
 
-    clearCardTitle(card: Card) {
-        this.cards =   this.cards.filter(item => item.id !== card.id);
-         this.cardService.clearCard(card);
+    createCard() {
+        this.newCard = true;
+    }
+
+    saveCardTitle() {
+        this.newCard = false;
+        this.onSaveCard.emit();
+    }
+
+    clearCardTitle() {
+        this.newCard = false;
     }
 
 }
