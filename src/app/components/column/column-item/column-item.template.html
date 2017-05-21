@@ -7,12 +7,12 @@
         </div>
         <div *ngIf="changeColumn ">
             <md-input-container>
-                <input
-                        mdInput
-                        autofocus="autofocus"
-                        placeholder="Column title"
-                        value="{{column.title}}">
-            </md-input-container>
+            <input
+                    mdInput
+                    autofocus="autofocus"
+                    placeholder="Column title"
+                    value="{{column.title}}">
+        </md-input-container>
             <div class="btn-row">
                 <button class="btn-row-save"
                         md-button
@@ -31,7 +31,7 @@
                 <md-icon>create</md-icon>
                 <span>Rename</span>
             </button>
-            <button md-menu-item (click)="deleteColumn(column)">
+            <button md-menu-item (click)="openDialog()">
                 <md-icon>delete</md-icon>
                 <span>Delete</span>
             </button>

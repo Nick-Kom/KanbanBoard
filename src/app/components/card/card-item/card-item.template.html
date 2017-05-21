@@ -1,5 +1,63 @@
-<md-card class="mdcard-style">
+<md-card class="mdcard-style" data-toggle="modal" [attr.data-target]="'#' + card.id">
     <p>{{card.title}}</p>
 </md-card>
 
+<!-- Modal -->
+<div class="modal fade" id="{{card.id}}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content modal-material">
+            <md-card class="card-header">
+                <button md-button>
+                    <md-icon class="clear-icon">
+                        list
+                    </md-icon>
+                    <span>Checklist</span>
+                </button>
+                <button md-button>
+                    <md-icon class="clear-icon">
+                        note_add
+                    </md-icon>
+                    <span>Files</span>
+                </button>
+                <button md-button>
+                    <md-icon class="clear-icon">
+                        access_time
+                    </md-icon>
+                    <span>Start/Due</span>
+                </button>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <md-icon class="clear-icon">clear</md-icon>
+                </button>
+            </md-card>
+            <div class="modal-body">
+                <div class="row">
 
+                    <div class="col-sm-12">
+                        <md-input-container class=" text-full-width">
+                            <input
+                                    mdInput
+                                    placeholder="TITLE"
+                                    value="{{card.title}}">
+
+                        </md-input-container>
+                        <md-input-container class=" text-full-width">
+                            <textarea
+                                    mdInput
+                                    placeholder="DESCRIPTION">
+                                {{card.description}}
+                            </textarea>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button md-raised-button>Delete</button>
+                <button md-raised-button>Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

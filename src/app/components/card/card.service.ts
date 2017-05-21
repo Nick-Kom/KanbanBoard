@@ -5,6 +5,7 @@ import {CARDS} from "../mocks";
 @Injectable()
 export class CardService {
     private dataCards: Card[] = CARDS;
+    private card: Card
 
     getDataCard(): Card[] {
         return this.dataCards;
@@ -18,4 +19,13 @@ export class CardService {
         this.dataCards.filter(item => item.id !== card.id);
 
     }
+
+    getCard() {
+        return this.card
+    }
+
+    CardId(card:Card){
+     this.card = card
+    }
+
 }

@@ -13,7 +13,7 @@ export class BoardItemComponent {
     @Output() onDeleteBoard = new EventEmitter;
     changeTitle: boolean = true;
 
-    constructor(private dialog: MdDialog,) {
+    constructor(private dialog: MdDialog) {
     }
 
     changeBoardTitle() {
