@@ -1,0 +1,26 @@
+<form class="form "
+      (ngSubmit)="onSubmit();
+          titleForm.reset()"
+      [formGroup]="titleForm">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-6  ">
+            <md-input-container class=" text-full-width">
+                <input
+                        mdInput
+                        placeholder="Checkbox title"
+                        autofocus="autofocus"
+                        formControlName="title">
+            </md-input-container>
+        </div>
+        <div class="col ">
+            <div class="btn-row">
+                <button class="btn-row-save"
+                        md-button
+                        [disabled]="titleForm.invalid">
+                    <md-icon class="save-icon">save</md-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

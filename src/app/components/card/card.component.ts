@@ -20,7 +20,7 @@ export class CardComponent {
     }
 
     saveCardTitle() {
-        let newCard = new Card(new Date().valueOf(), '', this.column.id, 'a', 'b', 'c', 'd', 'e');
+        let newCard = new Card(new Date().valueOf(), '', this.column.id, '', '', '');
         this.cards.push(newCard);
         this.cardService.createCard(newCard);
         console.log(this.cards)

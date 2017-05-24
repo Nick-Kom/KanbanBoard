@@ -17,6 +17,7 @@ export class CardItemComponent {
     cardDescription: boolean = false;
     cardDatesTimes: boolean = false;
     showDates: boolean = true;
+    showTodos: boolean = false;
     dateNow: Date = new Date();
     dateForm: FormGroup;
     titleForm: FormGroup;
@@ -80,6 +81,10 @@ export class CardItemComponent {
         this.cardDatesTimes = true;
     }
 
+    showCardTodos() {
+        this.showTodos = true;
+    }
+
     saveCardTitle() {
         this.card.title = this.titleForm.value.title;
         this.cardTitle = false;
@@ -131,20 +136,21 @@ export class CardItemComponent {
     }
 
     setSpentTime(dateNow: Date, firstDate: Date) {
-        if (firstDate.getTime() > dateNow.getTime()) {
-            this.estimatedTime = 0
-        }
-        else {
+        let oneDay = 24 * 60 * 60 * 1000;
+        this.spentTime = Math.round(Math.abs((dateNow.getTime() - firstDate.getTime()) / (oneDay)));
 
-            let oneDay = 24 * 60 * 60 * 1000;
-            this.spentTime = Math.round(Math.abs((dateNow.getTime() - firstDate.getTime()) / (oneDay)));
-            return this.spentTime;
+        if (this.estimatedTime < this.spentTime) {
+            this.spentTime = this.estimatedTime
         }
+
+        return this.spentTime;
+
+
     }
 
     setRemainingTime(dateNow: Date, dueDate: Date) {
         if (dueDate.getTime() < dateNow.getTime()) {
-            this.estimatedTime = 0
+            this.remainingTime = 0
         }
         else {
 

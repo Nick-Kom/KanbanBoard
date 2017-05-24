@@ -5,7 +5,6 @@ import {CARDS} from "../mocks";
 @Injectable()
 export class CardService {
     private dataCards: Card[] = CARDS;
-    private card: Card
 
     getDataCard(): Card[] {
         return this.dataCards;

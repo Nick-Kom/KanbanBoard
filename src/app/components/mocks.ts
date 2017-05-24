@@ -1,6 +1,7 @@
 import {Column} from "./column/column";
 import {Board} from "./board/board";
 import {Card} from "./card/card";
+import {Todo} from "./todo/todo";
 
 export const BOARDS: Board[] = [
     {
@@ -49,33 +50,27 @@ export const COLUMNS: Column[] = [
 export const CARDS: Card[] = [
     {
         id: 1,
-        title: "Lorem  sdsad swewsadf sdfsfd",
+        title: "Eius esse exercitationem id",
         columnId: 1,
         description:'',
         startDate:'',
-        dueDate:'',
-        startTime:'',
-        dueTime:''
+        dueDate:''
     },
     {
         id: 2,
-        title: "Lorem  sdsad wweewwww  sdfsfddffffffffffffffffffsdfsdfsdfsdfsdfsdfsdfsdfsfds",
+        title: "Dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consequatur doloremque ea eius esse exercitationem id",
         columnId: 1,
         description:'',
         startDate:'',
-        dueDate:'',
-        startTime:'',
-        dueTime:''
+        dueDate:''
     },
     {
         id: 3,
-        title: "Lorem  sdsad sadfsadf sdfsfd",
+        title: "Quis reiciendis rem sed tempore temporibus",
         columnId: 2,
-        description:'zsdgag sdfga agsdfgsdfg sdfgsd fgsdfgs f sdfgdfgsdfgsdf sdfgsdfg sdfgsdfg sdfgsdfgsd f df',
+        description:'Dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consequatur doloremque ea ',
         startDate:'2017-5-24',
-        dueDate:'2017-5-26',
-        startTime:'',
-        dueTime:''
+        dueDate:'2017-5-26'
     },
     {
         id: 4,
@@ -83,38 +78,46 @@ export const CARDS: Card[] = [
         columnId: 2,
         description:'',
         startDate:'',
-        dueDate:'',
-        startTime:'',
-        dueTime:''
+        dueDate:''
     },
     {
         id: 5,
-        title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
+        title: " nesciunt Lorem nobis obcaecati optio",
         columnId: 3,
         description:'',
         startDate:'',
-        dueDate:'',
-        startTime:'',
-        dueTime:''
+        dueDate:''
     },
     {
         id: 6,
-        title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
+        title: "Iure nesciunt nobis obcaecati optio",
         columnId: 6,
         description:'',
         startDate:'',
-        dueDate:'',
-        startTime:'',
-        dueTime:''
+        dueDate:''
     },
     {
         id: 6,
-        title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
+        title: "Asperiores assumenda consequatur",
         columnId: 5,
         description:'',
         startDate:'',
-        dueDate:'',
-        startTime:'',
-        dueTime:''
+        dueDate:''
+    }
+];
+
+
+export const TODOS: Todo[] = [
+    {
+        id: 1,
+        title: "Lorem ipsum dolor sit amet",
+        completed:false,
+        cardId:3
+    },
+    {
+        id: 2,
+        title: "Board for Lorem ipsum dolor",
+        completed:true,
+        cardId:3
     }
 ];

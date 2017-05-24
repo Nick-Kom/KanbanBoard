@@ -1,10 +1,17 @@
 <md-card class="mdcard-style" data-toggle="modal" [attr.data-target]="'#' + card.id">
     <p>{{card.title}}</p>
-
-    <div *ngIf="!estimatedTime == 0">
-        <p>Estimated time : {{estimatedTime}} days</p>
-        <p>Spend time : {{spentTime}} days</p>
-        <p>Remaining time from now : {{remainingTime}} days</p>
+    <div class="time-tracking"
+         *ngIf="!estimatedTime == 0">
+        <div class="row">
+            <div class="col title">ESTIMATED</div>
+            <div class="col title">SPENT</div>
+            <div class="col title">REMAINING</div>
+        </div>
+        <div class="row ">
+            <div class="col">{{estimatedTime}} days</div>
+            <div class="col">{{spentTime}} days</div>
+            <div class="col">{{remainingTime}} days</div>
+        </div>
     </div>
 </md-card>
 <!-- Modal -->
@@ -18,12 +25,13 @@
          role="document">
         <div class="modal-content modal-material">
             <md-card class="card-header">
-                <button md-button>
-                    <md-icon class="clear-icon">
-                        list
-                    </md-icon>
-                    <span>Checklist</span>
-                </button>
+                <!--     <button md-button
+                             (click)="showCardTodos()">
+                         <md-icon class="clear-icon">
+                             list
+                         </md-icon>
+                         <span>Checklist</span>
+                     </button>-->
                 <button md-button>
                     <md-icon class="clear-icon">
                         note_add
@@ -51,10 +59,7 @@
                     <p class="title">TITLE</p>
                     <p>{{card.title}}</p>
                 </div>
-
-
                 <form *ngIf="cardTitle"
-                      class="form booking-form"
                       (ngSubmit)="saveCardTitle()"
                       [formGroup]="titleForm">
 
@@ -79,16 +84,13 @@
                         </div>
                     </div>
                 </form>
-
                 <div *ngIf="!cardDescription || !card.description && !card.description==''"
                      class="change-title-description"
                      (click)="changeCardDescription()">
                     <p class="title">DESCRIPTION</p>
                     <p>{{card.description}}</p>
                 </div>
-
                 <form *ngIf="cardDescription"
-                      class="form booking-form"
                       (ngSubmit)="saveCardDescription()"
                       [formGroup]="descriptionForm">
 
@@ -116,25 +118,24 @@
                         </div>
                     </div>
                 </form>
-
                 <div *ngIf="!cardDatesTimes  && !showDates ||  card.startDate"
                      class="change-title-description"
                      (click)="changeCardDatesTimes()">
                     <div class="row">
                         <div class="col-md-3">
                             <p class="title">START DATE</p>
-                            <p >{{card.startDate | amDateFormat: 'DD-MM-YYYY'}}</p>
+                            <p>{{card.startDate | amDateFormat: 'DD-MM-YYYY'}}</p>
                         </div>
                         <div class="col-md-3">
                             <p class="title">DUE DATE</p>
-                            <p >{{card.dueDate | amDateFormat: 'DD-MM-YYYY'}}</p>
+                            <p>{{card.dueDate | amDateFormat: 'DD-MM-YYYY'}}</p>
                         </div>
                         <div class="col-md">
                             <p class="title">TIME TRACKING</p>
                             <div *ngIf="!estimatedTime == 0">
                                 <p>Estimated time : {{estimatedTime}} days</p>
                                 <p>Spend time : {{spentTime}} days</p>
-                                <p>Remaining time from now : {{remainingTime}} days</p>
+                                <p>Remaining time  : {{remainingTime}} days</p>
                             </div>
                             <p *ngIf="estimatedTime==0">
                                 Select the correct date
@@ -144,7 +145,6 @@
                     </div>
                 </div>
                 <form *ngIf="cardDatesTimes"
-                      class="form booking-form"
                       (ngSubmit)="saveCardDatesTimes()"
                       [formGroup]="dateForm">
                     <div class="row">
@@ -185,6 +185,12 @@
                         </div>
                     </div>
                 </form>
+                <div class="checkbox-section">
+                    <p class="title">CHECKLIST</p>
+                    <todo class="container-margin"
+                          [card]="card"></todo>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button md-raised-button

@@ -1,0 +1,21 @@
+<div class="todo-item ">
+    <div class="row  ">
+        <div class="col-2   checkbox">
+            <md-checkbox
+                    (click)="onToggle()"
+                    [(ngModel)]="todo.completed">
+
+            </md-checkbox>
+        </div>
+        <div class="col-6 title">
+            <p> {{todo.title}}</p>
+        </div>
+        <div class="col delete-col">
+            <button class="btn-delete"
+                    md-button (click)="onDelete()">
+                <md-icon class="delete-icon">delete</md-icon>
+            </button>
+        </div>
+    </div>
+</div>
+

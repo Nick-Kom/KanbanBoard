@@ -4,9 +4,7 @@ export class Card {
                 public columnId: number,
                 public description:string,
                 public startDate:string,
-                public dueDate:string,
-                public startTime:string,
-                public dueTime:string,
+                public dueDate:string
     ) {
     }
 }
