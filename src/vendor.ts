@@ -17,3 +17,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../src/app/assets/img/favicon.ico';
 import './app/styles/styles.css';
+import './app/styles/datepicker-theme.css';
+import './app/styles/material-theme-normalize.css';
+import './app/assets/fontello-icons/fontello.css';
+

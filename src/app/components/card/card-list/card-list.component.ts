@@ -10,6 +10,7 @@ import {CardService} from "../card.service";
 export class CardListComponent {
     @Input() cards: Card[];
     @Output() onSaveCard = new EventEmitter;
+    @Output() onDeleteCard = new EventEmitter;
     newCard: boolean = false;
 
     constructor(private cardService: CardService) {
@@ -26,6 +27,10 @@ export class CardListComponent {
 
     clearCardTitle() {
         this.newCard = false;
+    }
+
+    deleteCard(card: Card) {
+        this.onDeleteCard.emit(card);
     }
 
 }

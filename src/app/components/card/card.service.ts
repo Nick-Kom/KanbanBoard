@@ -15,17 +15,9 @@ export class CardService {
         this.dataCards.push(card);
         console.log(this.dataCards)
     }
-    clearCard(card:Card){
-        this.dataCards.filter(item => item.id !== card.id);
-
-    }
-
-    getCard() {
-        return this.card
-    }
-
-    CardId(card:Card){
-     this.card = card
+    deletCard(card:Card){
+        let indexToRemove = this.dataCards.indexOf(card);
+        this.dataCards.splice(indexToRemove, 1);
     }
 
 }

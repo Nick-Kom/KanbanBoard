@@ -1,3 +1,4 @@
-
-<card-list [cards]="cards" (onSaveCard)="saveCardTitle($event)">
+<card-list [cards]="cards"
+           (onSaveCard)="saveCardTitle($event)"
+           (onDeleteCard)="deleteCard($event)">
 </card-list>

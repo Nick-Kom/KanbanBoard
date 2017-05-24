@@ -1,6 +1,8 @@
 <div>
     <card-item class="card-item"
-               *ngFor=" let card of cards" [card]="card">
+               *ngFor=" let card of cards"
+               [card]="card"
+               (onDeleteCard)="deleteCard($event)">
     </card-item>
     <md-card class="mdcard-style"
              *ngIf="newCard">

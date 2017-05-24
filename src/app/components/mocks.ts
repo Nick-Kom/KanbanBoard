@@ -59,7 +59,7 @@ export const CARDS: Card[] = [
     },
     {
         id: 2,
-        title: "Lorem  sdsad wweewwww  sdfsfddffffffffffffffffffffffffffffffffffffffffffffffffffsdfsdfsdfsdfsdfsdfsdfsdfsfds",
+        title: "Lorem  sdsad wweewwww  sdfsfddffffffffffffffffffsdfsdfsdfsdfsdfsdfsdfsdfsfds",
         columnId: 1,
         description:'',
         startDate:'',
@@ -71,9 +71,9 @@ export const CARDS: Card[] = [
         id: 3,
         title: "Lorem  sdsad sadfsadf sdfsfd",
         columnId: 2,
-        description:'',
-        startDate:'',
-        dueDate:'',
+        description:'zsdgag sdfga agsdfgsdfg sdfgsd fgsdfgs f sdfgdfgsdfgsdf sdfgsdfg sdfgsdfg sdfgsdfgsd f df',
+        startDate:'2017-5-24',
+        dueDate:'2017-5-26',
         startTime:'',
         dueTime:''
     },

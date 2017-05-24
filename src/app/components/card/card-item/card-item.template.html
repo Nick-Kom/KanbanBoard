@@ -1,11 +1,21 @@
 <md-card class="mdcard-style" data-toggle="modal" [attr.data-target]="'#' + card.id">
     <p>{{card.title}}</p>
-</md-card>
 
+    <div *ngIf="!estimatedTime == 0">
+        <p>Estimated time : {{estimatedTime}} days</p>
+        <p>Spend time : {{spentTime}} days</p>
+        <p>Remaining time from now : {{remainingTime}} days</p>
+    </div>
+</md-card>
 <!-- Modal -->
-<div class="modal fade" id="{{card.id}}" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+<div class="modal fade"
+     id="{{card.id}}"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog "
+         role="document">
         <div class="modal-content modal-material">
             <md-card class="card-header">
                 <button md-button>
@@ -20,11 +30,12 @@
                     </md-icon>
                     <span>Files</span>
                 </button>
-                <button md-button>
+                <button md-button
+                        (click)="showCardDatesTimes()">
                     <md-icon class="clear-icon">
                         access_time
                     </md-icon>
-                    <span>Start/Due</span>
+                    <span>Start/Due Date</span>
                 </button>
                 <button type="button"
                         class="close"
@@ -34,29 +45,154 @@
                 </button>
             </md-card>
             <div class="modal-body">
-                <div class="row">
+                <div class="change-title-description"
+                     *ngIf="!cardTitle || !card.title "
+                     (click)="changeCardTitle()">
+                    <p class="title">TITLE</p>
+                    <p>{{card.title}}</p>
+                </div>
 
-                    <div class="col-sm-12">
+
+                <form *ngIf="cardTitle"
+                      class="form booking-form"
+                      (ngSubmit)="saveCardTitle()"
+                      [formGroup]="titleForm">
+
+                    <div class="container-margin">
                         <md-input-container class=" text-full-width">
                             <input
                                     mdInput
                                     placeholder="TITLE"
-                                    value="{{card.title}}">
-
+                                    formControlName="title">
                         </md-input-container>
+                        <div class="btn-row">
+                            <button class="btn-row-save"
+                                    md-button
+                                    [disabled]="titleForm.invalid">
+                                <md-icon class="save-icon">save</md-icon>
+                            </button>
+                            <button class="btn-row-clear"
+                                    md-button
+                                    (click)="clearCardTitle()">
+                                <md-icon class="clear-icon">clear</md-icon>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div *ngIf="!cardDescription || !card.description && !card.description==''"
+                     class="change-title-description"
+                     (click)="changeCardDescription()">
+                    <p class="title">DESCRIPTION</p>
+                    <p>{{card.description}}</p>
+                </div>
+
+                <form *ngIf="cardDescription"
+                      class="form booking-form"
+                      (ngSubmit)="saveCardDescription()"
+                      [formGroup]="descriptionForm">
+
+                    <div *ngIf="cardDescription"
+                         class="container-margin">
                         <md-input-container class=" text-full-width">
-                            <textarea
-                                    mdInput
-                                    placeholder="DESCRIPTION">
-                                {{card.description}}
+                            <textarea mdInput
+                                      placeholder="DESCRIPTION"
+                                      name="description"
+                                      formControlName="description">
+
                             </textarea>
                         </md-input-container>
+                        <div class="btn-row">
+                            <button class="btn-row-save"
+                                    md-button
+                                    [disabled]="descriptionForm.invalid">
+                                <md-icon class="save-icon">save</md-icon>
+                            </button>
+                            <button class="btn-row-clear"
+                                    md-button
+                                    (click)="clearCardDescription()">
+                                <md-icon class="clear-icon">clear</md-icon>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div *ngIf="!cardDatesTimes  && !showDates ||  card.startDate"
+                     class="change-title-description"
+                     (click)="changeCardDatesTimes()">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="title">START DATE</p>
+                            <p >{{card.startDate | amDateFormat: 'DD-MM-YYYY'}}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="title">DUE DATE</p>
+                            <p >{{card.dueDate | amDateFormat: 'DD-MM-YYYY'}}</p>
+                        </div>
+                        <div class="col-md">
+                            <p class="title">TIME TRACKING</p>
+                            <div *ngIf="!estimatedTime == 0">
+                                <p>Estimated time : {{estimatedTime}} days</p>
+                                <p>Spend time : {{spentTime}} days</p>
+                                <p>Remaining time from now : {{remainingTime}} days</p>
+                            </div>
+                            <p *ngIf="estimatedTime==0">
+                                Select the correct date
+                            </p>
+
+                        </div>
                     </div>
                 </div>
+                <form *ngIf="cardDatesTimes"
+                      class="form booking-form"
+                      (ngSubmit)="saveCardDatesTimes()"
+                      [formGroup]="dateForm">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <md2-datepicker class="d-block"
+                                            type="date"
+                                            min="{{minDate}}"
+                                            placeholder="START DATE"
+                                            format="DD/MM/YYYY"
+                                            name="startDate"
+                                            formControlName="startDate">
+                            </md2-datepicker>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <md2-datepicker class="d-block"
+                                            type="date"
+                                            min="{{minDate}}"
+                                            placeholder="DUE DATE"
+                                            format="DD/MM/YYYY"
+                                            formControlName="dueDate">
+                            </md2-datepicker>
+                        </div>
+                        <div class="col-md">
+                            <div class="btn-row">
+                                <button class="btn-row-save"
+                                        md-button
+                                        [disabled]="dateForm.invalid">
+                                    <md-icon class="save-icon">save</md-icon>
+                                </button>
+                                <button class="btn-row-clear"
+                                        md-button
+                                        (click)="clearCardDatesTimes()">
+                                    <md-icon class="clear-icon">clear</md-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button md-raised-button>Delete</button>
-                <button md-raised-button>Save changes</button>
+                <button md-raised-button
+                        aria-label="Close"
+                        data-dismiss="modal"
+                        type="button"
+                        (click)="openDialog()">Delete
+                </button>
             </div>
         </div>
     </div>
