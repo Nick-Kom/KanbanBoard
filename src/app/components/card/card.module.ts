@@ -4,12 +4,14 @@ import {MdCardModule} from "@angular/material";
 import {CardComponent} from './card.component';
 import {CardService} from "./card.service";
 import {CardListModule} from "./card-list/card-list.module";
+import {DragulaModule} from "ng2-dragula";
 
 @NgModule({
     imports: [
         BrowserModule,
         MdCardModule,
-        CardListModule
+        CardListModule,
+        DragulaModule
     ],
     declarations: [
         CardComponent

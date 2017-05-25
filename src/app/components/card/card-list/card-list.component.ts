@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Card} from "../card";
 import {CardService} from "../card.service";
+import {DragulaService} from "ng2-dragula";
 
 @Component({
     selector: 'card-list',
@@ -12,9 +13,6 @@ export class CardListComponent {
     @Output() onSaveCard = new EventEmitter;
     @Output() onDeleteCard = new EventEmitter;
     newCard: boolean = false;
-
-    constructor(private cardService: CardService) {
-    }
 
     createCard() {
         this.newCard = true;

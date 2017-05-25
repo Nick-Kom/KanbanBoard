@@ -12,6 +12,9 @@ export class ColumnListComponent {
     @Output() onDeleteColumn = new EventEmitter;
     newColumn: boolean = false;
 
+    constructor() {
+    }
+
     createColumn() {
         this.newColumn = true;
     }

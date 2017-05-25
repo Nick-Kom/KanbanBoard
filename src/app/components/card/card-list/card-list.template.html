@@ -1,5 +1,6 @@
 <div>
-    <card-item class="card-item"
+    <card-item [dragula]='"bag-one"' [dragulaModel]='cards'
+               class="card-item"
                *ngFor=" let card of cards"
                [card]="card"
                (onDeleteCard)="deleteCard($event)">

@@ -13,6 +13,7 @@ export class ColumnComponent {
     columns: Column[];
 
     constructor(private columnService: ColumnService) {
+
     }
 
     ngOnInit() {
