@@ -1,36 +1,39 @@
-<div class=" columns-space" >
+<div class=" columns-space">
     <column-item
             *ngFor=" let column of columns"
             [column]="column"
             (onDeleteColumn)="deleteColumn($event)">
     </column-item>
-    <div class="column-width" *ngIf="newColumn">
-        <div class="column-background">
-            <md-input-container>
-                <input
-                        mdInput
-                        autofocus="autofocus"
-                        placeholder="Column title"
-                        value="">
-            </md-input-container>
-            <div class="btn-row">
-                <button class="btn-row-save"
-                        md-button
-                        (click)="saveColumn()">
-                    <md-icon class="save-icon">save</md-icon>
-                </button>
-                <button class="btn-row-clear"
-                        md-button
-                        (click)="clearCardTitle(card)">
-                    <md-icon class="clear-icon">clear</md-icon>
-                </button>
+    <form (ngSubmit)="saveColumnTitle(); titleForm.reset()"
+          [formGroup]="titleForm">
+        <div class="column-width" *ngIf="newColumn">
+            <div class="column-background">
+                <md-input-container>
+                    <input mdInput
+                           autofocus="autofocus"
+                           placeholder="Column title"
+                           formControlName="title">
+                </md-input-container>
+                <div class="btn-row">
+                    <button class="btn-row-save"
+                            md-button type="submit"
+                            [disabled]="titleForm.invalid">
+                        <md-icon class="save-icon">save</md-icon>
+                    </button>
+                    <button class="btn-row-clear"
+                            md-button
+                            (click)="clearCardTitle()">
+                        <md-icon class="clear-icon">clear</md-icon>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <div class="add-position">
         <div mdTooltip="Add new column">
             <button class="btn-add"
                     md-mini-fab
+                    type="button"
                     (click)="createColumn()">
                 <md-icon class="btn-add-icon">add</md-icon>
             </button>

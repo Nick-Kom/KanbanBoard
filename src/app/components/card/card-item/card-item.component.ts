@@ -4,6 +4,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Card} from "../card";
 import {CardService} from "../card.service";
 import {AlertConfirmDeleting} from "../../modal/alert-confirm/alert-confirm-deleting";
+import {DragulaService} from "ng2-dragula";
+import {Todo} from "../../todo/todo";
+import {TodoService} from "../../todo/todo.service";
 
 @Component({
     selector: 'card-item',
@@ -17,7 +20,6 @@ export class CardItemComponent {
     cardDescription: boolean = false;
     cardDatesTimes: boolean = false;
     showDates: boolean = true;
-    showTodos: boolean = false;
     dateNow: Date = new Date();
     dateForm: FormGroup;
     titleForm: FormGroup;
@@ -28,15 +30,21 @@ export class CardItemComponent {
     remainingTime: number;
     firstDate: Date;
     lastDate: Date;
-
+    cardTodos: Todo[];
+    cardCompletedChecks: Todo[];
 
     constructor(private dialog: MdDialog,
                 private cardService: CardService,
-                private formBuilder: FormBuilder) {
+                private todoService: TodoService,
+                private formBuilder: FormBuilder,
+                private dragulaService: DragulaService) {
+
     }
 
-
     ngOnInit() {
+        this.cardTodos = this.todoService.getTodos().filter(obj => obj.cardId === this.card.id);
+        this.cardCompletedChecks = this.cardTodos.filter(obj => obj.completed === true);
+
         this.firstDate = new Date(this.card.startDate);
         this.lastDate = new Date(this.card.dueDate);
         this.estimatedTime = this.setEstimatedTime(this.firstDate, this.lastDate);
@@ -81,10 +89,6 @@ export class CardItemComponent {
         this.cardDatesTimes = true;
     }
 
-    showCardTodos() {
-        this.showTodos = true;
-    }
-
     saveCardTitle() {
         this.card.title = this.titleForm.value.title;
         this.cardTitle = false;
@@ -112,6 +116,7 @@ export class CardItemComponent {
     saveCardDatesTimes() {
         this.cardDatesTimes = false;
         console.log(this.dateForm.value);
+
         this.card.startDate = this.dateForm.value.startDate;
         this.card.dueDate = this.dateForm.value.dueDate;
 
@@ -130,14 +135,16 @@ export class CardItemComponent {
             this.estimatedTime = 0
         }
         else {
-            this.estimatedTime = Math.round(Math.abs((firstDate.getTime() - dueDate.getTime()) / (oneDay)));
+            this.estimatedTime = Math
+                .round(Math.abs((firstDate.getTime() - dueDate.getTime()) / (oneDay)));
             return this.estimatedTime;
         }
     }
 
     setSpentTime(dateNow: Date, firstDate: Date) {
         let oneDay = 24 * 60 * 60 * 1000;
-        this.spentTime = Math.round(Math.abs((dateNow.getTime() - firstDate.getTime()) / (oneDay)));
+        this.spentTime = Math
+            .round(Math.abs((dateNow.getTime() - firstDate.getTime()) / (oneDay)));
 
         if (this.estimatedTime < this.spentTime) {
             this.spentTime = this.estimatedTime
@@ -155,7 +162,8 @@ export class CardItemComponent {
         else {
 
             let oneDay = 24 * 60 * 60 * 1000;
-            this.remainingTime = Math.round(Math.abs((dueDate.getTime() - dateNow.getTime()) / (oneDay)));
+            this.remainingTime = Math
+                .round(Math.abs((dueDate.getTime() - dateNow.getTime()) / (oneDay)));
             return this.remainingTime
         }
     }
@@ -163,7 +171,6 @@ export class CardItemComponent {
     deleteCard(card: Card) {
         this.onDeleteCard.emit(card);
     }
-
 
     openDialog() {
         let dialogRef = this.dialog.open(AlertConfirmDeleting);

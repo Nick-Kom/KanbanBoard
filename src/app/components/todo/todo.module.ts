@@ -24,4 +24,5 @@ import {TodoFormModule} from "./todo-form/todo-form.module";
     ]
 })
 
-export class TodoModule { }
+export class TodoModule {
+}

@@ -4,13 +4,17 @@ import {MaterialModule} from "@angular/material";
 import {ColumnItemComponent} from "./column-item.component";
 import {CardModule} from "../../card/card.module";
 import {AlertConfirmDeleting} from "../../modal/alert-confirm/alert-confirm-deleting";
+import {ReactiveFormsModule} from "@angular/forms";
+import {DragulaModule} from "ng2-dragula";
 
 
 @NgModule({
     imports: [
         BrowserModule,
         MaterialModule,
-        CardModule
+        CardModule,
+        ReactiveFormsModule,
+        DragulaModule
     ],
     declarations: [
         ColumnItemComponent

@@ -1,4 +1,4 @@
-<md-card class="mdcard-style" data-toggle="modal" [attr.data-target]="'#' + card.id">
+<md-card id="1{{card.id}}" class="mdcard-style" data-toggle="modal" [attr.data-target]="'#' + card.id">
     <p>{{card.title}}</p>
     <div class="time-tracking"
          *ngIf="!estimatedTime == 0">
@@ -8,10 +8,16 @@
             <div class="col title">REMAINING</div>
         </div>
         <div class="row ">
-            <div class="col">{{estimatedTime}} days</div>
-            <div class="col">{{spentTime}} days</div>
-            <div class="col">{{remainingTime}} days</div>
+            <i class="col">{{estimatedTime}} days</i>
+            <i class="col">{{spentTime}} days</i>
+            <i class="col">{{remainingTime}} days</i>
         </div>
+    </div>
+    <div class="checks" *ngIf="cardTodos.length">
+        <md-icon class="checks-icon">
+            check_box
+        </md-icon>
+        <i class="checks-count">{{cardCompletedChecks.length}}/{{cardTodos.length}}</i>
     </div>
 </md-card>
 <!-- Modal -->
@@ -31,14 +37,15 @@
                              list
                          </md-icon>
                          <span>Checklist</span>
-                     </button>-->
-                <button md-button>
+                     </button>
+                <button md-button type="button">
                     <md-icon class="clear-icon">
                         note_add
                     </md-icon>
                     <span>Files</span>
-                </button>
+                </button>-->
                 <button md-button
+                        type="button"
                         (click)="showCardDatesTimes()">
                     <md-icon class="clear-icon">
                         access_time
@@ -72,12 +79,15 @@
                         </md-input-container>
                         <div class="btn-row">
                             <button class="btn-row-save"
-                                    md-button
+                                    md-raised-button
+                                    type="submit"
                                     [disabled]="titleForm.invalid">
+                                Save
                                 <md-icon class="save-icon">save</md-icon>
                             </button>
                             <button class="btn-row-clear"
                                     md-button
+                                    type="button"
                                     (click)="clearCardTitle()">
                                 <md-icon class="clear-icon">clear</md-icon>
                             </button>
@@ -93,7 +103,6 @@
                 <form *ngIf="cardDescription"
                       (ngSubmit)="saveCardDescription()"
                       [formGroup]="descriptionForm">
-
                     <div *ngIf="cardDescription"
                          class="container-margin">
                         <md-input-container class=" text-full-width">
@@ -106,12 +115,15 @@
                         </md-input-container>
                         <div class="btn-row">
                             <button class="btn-row-save"
-                                    md-button
+                                    md-raised-button
+                                    type="submit"
                                     [disabled]="descriptionForm.invalid">
+                                Save
                                 <md-icon class="save-icon">save</md-icon>
                             </button>
                             <button class="btn-row-clear"
                                     md-button
+                                    type="button"
                                     (click)="clearCardDescription()">
                                 <md-icon class="clear-icon">clear</md-icon>
                             </button>
@@ -135,7 +147,7 @@
                             <div *ngIf="!estimatedTime == 0">
                                 <p>Estimated time : {{estimatedTime}} days</p>
                                 <p>Spend time : {{spentTime}} days</p>
-                                <p>Remaining time  : {{remainingTime}} days</p>
+                                <p>Remaining time : {{remainingTime}} days</p>
                             </div>
                             <p *ngIf="estimatedTime==0">
                                 Select the correct date
@@ -148,7 +160,7 @@
                       (ngSubmit)="saveCardDatesTimes()"
                       [formGroup]="dateForm">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md">
                             <md2-datepicker class="d-block"
                                             type="date"
                                             min="{{minDate}}"
@@ -160,7 +172,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md">
                             <md2-datepicker class="d-block"
                                             type="date"
                                             min="{{minDate}}"
@@ -169,15 +181,20 @@
                                             formControlName="dueDate">
                             </md2-datepicker>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md">
                             <div class="btn-row">
                                 <button class="btn-row-save"
-                                        md-button
+                                        md-raised-button
+                                        type="submit"
                                         [disabled]="dateForm.invalid">
+                                    Save
                                     <md-icon class="save-icon">save</md-icon>
                                 </button>
                                 <button class="btn-row-clear"
                                         md-button
+                                        type="button"
                                         (click)="clearCardDatesTimes()">
                                     <md-icon class="clear-icon">clear</md-icon>
                                 </button>

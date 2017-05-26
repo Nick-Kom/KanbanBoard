@@ -10,7 +10,7 @@ export class BoardService {
         return this.dataBoards;
     }
     createBoard(board: Board) {
-        this.dataBoards.push(board);
+        this.dataBoards.unshift(board);
         console.log(this.dataBoards)
     }
     deleteBoard(board: Board) {

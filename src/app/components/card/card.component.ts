@@ -11,22 +11,24 @@ import {Card} from "./card";
 export class CardComponent {
     @Input() column: Column;
     cards: Card[];
+    cardsById: Card[];
 
     constructor(private cardService: CardService) {
     }
 
     ngOnInit() {
         this.cards = this.cardService.getDataCard().filter(obj => obj.columnId === this.column.id);
+
     }
 
-    saveCardTitle() {
-        let newCard = new Card(new Date().valueOf(), '', this.column.id, '', '', '');
+    saveCardTitle(title: string) {
+        let newCard = new Card(new Date().valueOf(), title, this.column.id, '', '', '');
         this.cards.push(newCard);
         this.cardService.createCard(newCard);
         console.log(this.cards)
     }
 
-    deleteCard(card:Card){
+    deleteCard(card: Card) {
         let indexToRemove = this.cards.indexOf(card);
         this.cards.splice(indexToRemove, 1);
         this.cardService.deletCard(card);

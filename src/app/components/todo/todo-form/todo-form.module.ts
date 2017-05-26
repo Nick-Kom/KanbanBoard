@@ -22,4 +22,5 @@ import {ReactiveFormsModule} from "@angular/forms";
     ]
 })
 
-export class TodoFormModule { }
+export class TodoFormModule {
+}

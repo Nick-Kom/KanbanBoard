@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Card} from "./card";
-import {CARDS} from "../mocks";
+import {CARDS, TODOS} from "../mocks";
+import {Todo} from "../todo/todo";
 
 @Injectable()
 export class CardService {
@@ -10,13 +11,16 @@ export class CardService {
         return this.dataCards;
     }
 
+
     createCard(card: Card) {
         this.dataCards.push(card);
         console.log(this.dataCards)
     }
-    deletCard(card:Card){
+
+    deletCard(card: Card) {
         let indexToRemove = this.dataCards.indexOf(card);
         this.dataCards.splice(indexToRemove, 1);
     }
+
 
 }

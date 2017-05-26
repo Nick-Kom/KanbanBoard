@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Column} from "../column";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'column-list',
@@ -11,17 +12,24 @@ export class ColumnListComponent {
     @Output() onSaveColumn = new EventEmitter;
     @Output() onDeleteColumn = new EventEmitter;
     newColumn: boolean = false;
+    titleForm: FormGroup
 
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
+    }
+
+    ngOnInit() {
+        this.titleForm = this.formBuilder.group({
+            title: ['', [Validators.required]]
+        });
     }
 
     createColumn() {
         this.newColumn = true;
     }
 
-    saveColumn() {
+    saveColumnTitle() {
         this.newColumn = false;
-        this.onSaveColumn.emit();
+        this.onSaveColumn.emit(this.titleForm.value.title);
     }
 
     clearCardTitle() {

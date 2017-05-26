@@ -24,4 +24,5 @@ import {DragulaModule} from "ng2-dragula";
     ]
 })
 
-export class CardModule { }
+export class CardModule {
+}

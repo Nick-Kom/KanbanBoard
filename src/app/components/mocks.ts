@@ -52,57 +52,57 @@ export const CARDS: Card[] = [
         id: 1,
         title: "Eius esse exercitationem id",
         columnId: 1,
-        description:'',
-        startDate:'',
-        dueDate:''
+        description: '',
+        startDate: '',
+        dueDate: ''
     },
     {
         id: 2,
         title: "Dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consequatur doloremque ea eius esse exercitationem id",
         columnId: 1,
-        description:'',
-        startDate:'',
-        dueDate:''
+        description: '',
+        startDate: '',
+        dueDate: ''
     },
     {
         id: 3,
         title: "Quis reiciendis rem sed tempore temporibus",
         columnId: 2,
-        description:'Dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consequatur doloremque ea ',
-        startDate:'2017-5-24',
-        dueDate:'2017-5-26'
+        description: 'Dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consequatur doloremque ea ',
+        startDate: '2017-5-24',
+        dueDate: '2017-5-28'
     },
     {
         id: 4,
         title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
         columnId: 2,
-        description:'',
-        startDate:'',
-        dueDate:''
+        description: '',
+        startDate: '',
+        dueDate: ''
     },
     {
         id: 5,
         title: " nesciunt Lorem nobis obcaecati optio",
         columnId: 3,
-        description:'',
-        startDate:'',
-        dueDate:''
+        description: '',
+        startDate: '',
+        dueDate: ''
     },
     {
         id: 6,
         title: "Iure nesciunt nobis obcaecati optio",
         columnId: 6,
-        description:'',
-        startDate:'',
-        dueDate:''
+        description: '',
+        startDate: '',
+        dueDate: ''
     },
     {
         id: 6,
         title: "Asperiores assumenda consequatur",
         columnId: 5,
-        description:'',
-        startDate:'',
-        dueDate:''
+        description: '',
+        startDate: '',
+        dueDate: ''
     }
 ];
 
@@ -111,13 +111,19 @@ export const TODOS: Todo[] = [
     {
         id: 1,
         title: "Lorem ipsum dolor sit amet",
-        completed:false,
-        cardId:3
+        completed: true,
+        cardId: 3
     },
     {
         id: 2,
         title: "Board for Lorem ipsum dolor",
-        completed:true,
-        cardId:3
+        completed: true,
+        cardId: 3
+    },
+    {
+        id: 3,
+        title: "Board for Lorem ipsum dolor",
+        completed: false,
+        cardId: 3
     }
 ];

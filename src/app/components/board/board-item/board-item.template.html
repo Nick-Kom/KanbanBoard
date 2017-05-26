@@ -1,36 +1,45 @@
-<div class="board" >
+<div class="board">
     <md-card class="board-title">
-        <div class="row justify-content-between">
-            <div class="col-md-4 ">
-                <md-input-container
-                        *ngIf="!changeTitle || !board.title">
-                    <input class="board-title-input"
-                           mdInput
-                           autofocus="autofocus"
-                           placeholder="Board title"
-                           value={{board.title}}>
-                </md-input-container>
-                <h2 class="board-title-h2"
-                    *ngIf="changeTitle ">
-                    {{board.title}}
-                </h2>
-            </div>
+        <form
+                (ngSubmit)="saveBoardTitle()"
+                [formGroup]="titleForm">
 
-            <div class="col-md-5 ">
-                <div class="board-title-buttons">
-                    <button md-button *ngIf="!changeTitle || board.title == '' "
-                            (click)="saveBoardTitle()">
-                        <md-icon class="save-icon">save</md-icon>
-                    </button>
-                    <button md-button (click)="changeBoardTitle(board)">
-                        <md-icon>create</md-icon>
-                    </button>
-                    <button md-button (click)="openDialog()">
-                        <md-icon>delete</md-icon>
-                    </button>
+            <div class="row justify-content-between">
+                <div class="col col-9 col-md-6 col-lg-8 ">
+                    <md-input-container *ngIf="!changeTitle || !board.title">
+                        <input class="board-title-input"
+                               mdInput
+                               autofocus="autofocus"
+                               placeholder="Board title"
+                               formControlName="title">
+                    </md-input-container>
+                    <h2 class="board-title-h2"
+                        *ngIf="changeTitle ">
+                        {{board.title}}
+                    </h2>
+                </div>
+
+                <div class="col col-3 col-md-6 col-lg-4 ">
+                    <div class="board-title-buttons">
+                        <button *ngIf="!changeTitle || !board.title  "
+                                md-button
+                                [disabled]="titleForm.invalid">
+                            <md-icon class="save-icon">save</md-icon>
+                        </button>
+                        <button md-button
+                                type="button"
+                                (click)="changeBoardTitle()">
+                            <md-icon>create</md-icon>
+                        </button>
+                        <button md-button
+                                type="button"
+                                (click)="openDialog()">
+                            <md-icon>delete</md-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </md-card>
     <column [board]="board"></column>
 </div>

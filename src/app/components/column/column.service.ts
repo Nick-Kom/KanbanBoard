@@ -9,10 +9,12 @@ export class ColumnService {
     getDataColumns(): Column[] {
         return this.dataColumns;
     }
+
     createColumn(column: Column) {
         this.dataColumns.push(column);
         console.log(this.dataColumns)
     }
+
     deleteColumn(column: Column) {
         let indexToRemove = this.dataColumns.indexOf(column);
         this.dataColumns.splice(indexToRemove, 1);

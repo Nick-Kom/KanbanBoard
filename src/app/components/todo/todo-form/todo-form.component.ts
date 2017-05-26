@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class TodoFormComponent {
     title: string = '';
-    titleForm:FormGroup;
+    titleForm: FormGroup;
     @Output() create: EventEmitter<string> = new EventEmitter();
 
 
@@ -17,7 +17,7 @@ export class TodoFormComponent {
 
     ngOnInit() {
         this.titleForm = this.formBuilder.group({
-            title: ['', [Validators]]
+            title: ['', [Validators.required]]
         });
     }
 

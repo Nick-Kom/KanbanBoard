@@ -6,9 +6,8 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 
-// RxJS
-import 'rxjs';
 
+import 'rxjs';
 import 'hammerjs';
 import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 import '../node_modules/jquery/dist/jquery.js';

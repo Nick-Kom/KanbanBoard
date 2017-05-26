@@ -13,16 +13,17 @@ import {TODOS} from "../mocks";
 @Injectable()
 export class TodoService {
     private dataTodos: Todo[] = TODOS;
-
+    countTrue: number;
 
     constructor(private  http: Http) {
     }
 
-    getTodos():  Todo[] {
+    getTodos(): Todo[] {
         return this.dataTodos;
     }
 
-    createTodo(title: string) {
+    createTodo(todo: Todo) {
+        this.getTodos().push(todo)
 
     }
 
@@ -31,7 +32,9 @@ export class TodoService {
     }
 
     toggleTodo(todo: Todo) {
-
+        todo.completed = !todo.completed;
+        this.countTrue = this.dataTodos.filter(obj => obj.completed === true).length
+        console.log(this.countTrue)
     }
 
 }

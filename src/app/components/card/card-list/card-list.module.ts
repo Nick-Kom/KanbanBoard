@@ -6,6 +6,7 @@ import {CardItemModule} from "../card-item/card-item.module";
 import {CardService} from "../card.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DragulaModule} from "ng2-dragula";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {DragulaModule} from "ng2-dragula";
         CardItemModule,
         MaterialModule,
         BrowserAnimationsModule,
-        DragulaModule
+        DragulaModule,
+        ReactiveFormsModule
     ],
     declarations: [
         CardListComponent

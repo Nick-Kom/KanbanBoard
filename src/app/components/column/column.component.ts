@@ -17,11 +17,12 @@ export class ColumnComponent {
     }
 
     ngOnInit() {
-        this.columns = this.columnService.getDataColumns().filter(obj => obj.boardId === this.board.id);
+        this.columns = this.columnService.getDataColumns()
+            .filter(obj => obj.boardId === this.board.id);
     }
 
-    saveColumn() {
-        let newColumn = new Column(new Date().valueOf(), '', this.board.id);
+    saveColumn(title: string) {
+        let newColumn = new Column(new Date().valueOf(), title, this.board.id);
         this.columns.push(newColumn)
         this.columnService.createColumn(newColumn);
     }

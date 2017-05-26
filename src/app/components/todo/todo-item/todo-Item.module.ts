@@ -22,4 +22,5 @@ import {FormsModule} from "@angular/forms";
     ]
 })
 
-export class TodoItemModule { }
+export class TodoItemModule {
+}

@@ -1,28 +1,38 @@
 <div>
-    <card-item [dragula]='"bag-one"' [dragulaModel]='cards'
-               class="card-item"
-               *ngFor=" let card of cards"
-               [card]="card"
-               (onDeleteCard)="deleteCard($event)">
-    </card-item>
-    <md-card class="mdcard-style"
-             *ngIf="newCard">
-        <input class="card-title-input"
-               autofocus="autofocus"
-               value="">
-        <div class="btn-row">
-            <button class="btn-row-save"
-                    md-button
-                    (click)="saveCardTitle()">
-                <md-icon class="save-icon">save</md-icon>
-            </button>
-            <button class="btn-row-clear"
-                    md-button
-                    (click)="clearCardTitle(card)">
-                <md-icon class="clear-icon">clear</md-icon>
-            </button>
-        </div>
-    </md-card>
+    <div [dragula]='"bag-one"' [dragulaModel]='cards'>
+        <card-item
+                class="card-item"
+                *ngFor=" let card of cards"
+                [card]="card"
+                (onDeleteCard)="deleteCard($event)">
+        </card-item>
+    </div>
+    <form *ngIf="newCard"
+          (ngSubmit)="saveCardTitle();
+                  titleForm.reset()"
+          [formGroup]="titleForm">
+
+        <md-card class="mdcard-style">
+            <input class="card-title-input"
+                   autofocus="autofocus"
+                   placeholder="card title..."
+                   formControlName="title">
+            <div class="btn-row">
+                <button class="btn-row-save"
+                        md-button
+                        type="submit"
+                        [disabled]="titleForm.invalid">
+                    <md-icon class="save-icon">save</md-icon>
+                </button>
+                <button class="btn-row-clear"
+                        md-button
+                        type="button"
+                        (click)="clearCardTitle(card)">
+                    <md-icon class="clear-icon">clear</md-icon>
+                </button>
+            </div>
+        </md-card>
+    </form>
     <div class="add-card">
         <p class="btn-add"
            (click)="createCard()">

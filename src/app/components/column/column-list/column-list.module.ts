@@ -6,6 +6,7 @@ import {ColumnItemModule} from "../column-item/column-item.module";
 import {ColumnService} from "../column.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DragulaModule} from "ng2-dragula";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {DragulaModule} from "ng2-dragula";
         ColumnItemModule,
         MaterialModule,
         BrowserAnimationsModule,
-        DragulaModule
+        DragulaModule,
+        ReactiveFormsModule
     ],
     declarations: [
         ColumnListComponent
