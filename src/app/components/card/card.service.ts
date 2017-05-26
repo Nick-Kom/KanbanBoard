@@ -11,7 +11,6 @@ export class CardService {
         return this.dataCards;
     }
 
-
     createCard(card: Card) {
         this.dataCards.push(card);
         console.log(this.dataCards)
@@ -19,7 +18,9 @@ export class CardService {
 
     deletCard(card: Card) {
         let indexToRemove = this.dataCards.indexOf(card);
-        this.dataCards.splice(indexToRemove, 1);
+        if (indexToRemove > -1) {
+            this.dataCards.splice(indexToRemove, 1);
+        }
     }
 
 

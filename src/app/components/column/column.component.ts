@@ -23,13 +23,15 @@ export class ColumnComponent {
 
     saveColumn(title: string) {
         let newColumn = new Column(new Date().valueOf(), title, this.board.id);
-        this.columns.push(newColumn)
+        this.columns.push(newColumn);
         this.columnService.createColumn(newColumn);
     }
 
     deleteColumn(column: Column) {
         let indexToRemove = this.columns.indexOf(column);
-        this.columns.splice(indexToRemove, 1);
+        if (indexToRemove > -1) {
+            this.columns.splice(indexToRemove, 1);
+        }
         this.columnService.deleteColumn(column);
     }
 

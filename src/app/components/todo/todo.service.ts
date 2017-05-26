@@ -27,8 +27,10 @@ export class TodoService {
 
     }
 
-    deleteTodo(todo: Todo) {
-
+    deleteTodo(index:number) {
+        if (index > -1) {
+            this.dataTodos.splice(index, 1);
+        }
     }
 
     toggleTodo(todo: Todo) {

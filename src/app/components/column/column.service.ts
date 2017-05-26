@@ -17,6 +17,8 @@ export class ColumnService {
 
     deleteColumn(column: Column) {
         let indexToRemove = this.dataColumns.indexOf(column);
-        this.dataColumns.splice(indexToRemove, 1);
+        if (indexToRemove > -1) {
+            this.dataColumns.splice(indexToRemove, 1);
+        }
     }
 }

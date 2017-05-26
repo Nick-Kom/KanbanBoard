@@ -5,7 +5,7 @@ import {Card} from "../card/card";
 
 @Component({
     selector: 'todo',
-    templateUrl: 'todo.component.html'
+    templateUrl: 'todo.template.html'
 })
 export class TodoComponent {
     @Input() card: Card;
@@ -30,6 +30,7 @@ export class TodoComponent {
         if (index > -1) {
             this.todos.splice(index, 1);
         }
+        this.todoService.deleteTodo(index)
     } ;
 
     toggle(todo: Todo) {

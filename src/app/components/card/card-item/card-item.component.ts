@@ -152,7 +152,6 @@ export class CardItemComponent {
 
         return this.spentTime;
 
-
     }
 
     setRemainingTime(dateNow: Date, dueDate: Date) {

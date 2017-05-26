@@ -30,7 +30,9 @@ export class CardComponent {
 
     deleteCard(card: Card) {
         let indexToRemove = this.cards.indexOf(card);
-        this.cards.splice(indexToRemove, 1);
+        if (indexToRemove > -1) {
+            this.cards.splice(indexToRemove, 1);
+        }
         this.cardService.deletCard(card);
     }
 }

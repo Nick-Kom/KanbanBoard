@@ -23,14 +23,11 @@ export class BoardComponent {
 
     createBoard() {
         let board = new Board(new Date().valueOf(), '');
-        //this.boards.push(board);
         this.boardService.createBoard(board);
     }
 
     deleteBoard(board: Board) {
-
         this.boardService.deleteBoard(board);
-        console.log(this.boards)
     }
 
 }

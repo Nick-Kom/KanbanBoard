@@ -14,10 +14,10 @@ export class BoardService {
         console.log(this.dataBoards)
     }
     deleteBoard(board: Board) {
-
         let indexToRemove = this.dataBoards.indexOf(board);
-        this.dataBoards.splice(indexToRemove, 1);
-        //this.dataBoards.filter(boardId => boardId.id !== board.id);
+        if (indexToRemove > -1) {
+            this.dataBoards.splice(indexToRemove, 1);
+        }
         console.log(this.dataBoards)
     }
 }
