@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Column} from "../column";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Column} from "../column";
 
 @Component({
     selector: 'column-list',
@@ -23,11 +23,11 @@ export class ColumnListComponent {
         });
     }
 
-    createColumn() {
+    showCreateColumn() {
         this.newColumn = true;
     }
 
-    saveColumnTitle() {
+    createColumnTitle() {
         this.newColumn = false;
         this.onSaveColumn.emit(this.titleForm.value.title);
     }

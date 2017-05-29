@@ -3,6 +3,7 @@ import {Board} from "../board"
 import {MdDialog} from '@angular/material';
 import {AlertConfirmDeleting} from "../../modal/alert-confirm/alert-confirm-deleting";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {BoardService} from "../board.service";
 
 @Component({
     selector: 'board-item',
@@ -13,10 +14,11 @@ export class BoardItemComponent {
     @Input() board: Board;
     @Output() onDeleteBoard = new EventEmitter;
     changeTitle: boolean = true;
-    titleForm:FormGroup
+    titleForm: FormGroup
 
     constructor(private dialog: MdDialog,
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder,
+                private boardService: BoardService) {
     }
 
     ngOnInit() {
@@ -25,13 +27,22 @@ export class BoardItemComponent {
         });
     }
 
-    changeBoardTitle() {
+    editBoardTitle() {
         this.changeTitle = false;
     }
 
     saveBoardTitle() {
-        this.board.title = this.titleForm.value.title;
-        this.changeTitle = true;
+        let obj: Board = {
+            id: this.board.id,
+            title: this.titleForm.value.title
+        };
+        this.boardService.changeBoardTitle(obj)
+            .subscribe(
+                res => {
+                    this.board.title = this.titleForm.value.title;
+                    this.changeTitle = true;
+                }
+            );
     }
 
     deleteBoard(board: Board) {

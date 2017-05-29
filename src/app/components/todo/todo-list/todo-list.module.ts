@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {MdCardModule} from "@angular/material";
 import {TodoListComponent} from "./todo-list.component";
 import {TodoService} from "../todo.service";
 import {TodoItemModule} from "../todo-item/todo-Item.module";

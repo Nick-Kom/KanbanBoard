@@ -5,9 +5,8 @@
              [mdMenuTriggerFor]="menu">
             <h3>{{column.title}}</h3>
         </div>
-        <form
-                (ngSubmit)="saveColumnTitle()"
-                [formGroup]="titleForm">
+        <form (ngSubmit)="changeColumnTitle()"
+              [formGroup]="titleForm">
 
             <div *ngIf="changeColumn ">
                 <md-input-container>
@@ -36,7 +35,7 @@
         <md-menu #menu="mdMenu">
             <button md-menu-item
                     type="button"
-                    (click)="changeColumnTitle()">
+                    (click)="editColumnTitle()">
                 <md-icon>create</md-icon>
                 <span>Rename</span>
             </button>

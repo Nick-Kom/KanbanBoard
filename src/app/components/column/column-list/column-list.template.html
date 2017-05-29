@@ -4,7 +4,7 @@
             [column]="column"
             (onDeleteColumn)="deleteColumn($event)">
     </column-item>
-    <form (ngSubmit)="saveColumnTitle(); titleForm.reset()"
+    <form (ngSubmit)="createColumnTitle(); titleForm.reset()"
           [formGroup]="titleForm">
         <div class="column-width" *ngIf="newColumn">
             <div class="column-background">
@@ -34,7 +34,7 @@
             <button class="btn-add"
                     md-mini-fab
                     type="button"
-                    (click)="createColumn()">
+                    (click)="showCreateColumn()">
                 <md-icon class="btn-add-icon">add</md-icon>
             </button>
         </div>

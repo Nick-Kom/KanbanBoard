@@ -30,26 +30,29 @@ export class CardItemComponent {
     remainingTime: number;
     firstDate: Date;
     lastDate: Date;
-    cardTodos: Todo[];
-    cardCompletedChecks: Todo[];
+    cardTodos: Todo[] = [];
+    cardCompletedChecks: Todo[] = [];
 
     constructor(private dialog: MdDialog,
                 private cardService: CardService,
                 private todoService: TodoService,
                 private formBuilder: FormBuilder,
                 private dragulaService: DragulaService) {
-
     }
 
+
     ngOnInit() {
-        this.cardTodos = this.todoService.getTodos().filter(obj => obj.cardId === this.card.id);
-        this.cardCompletedChecks = this.cardTodos.filter(obj => obj.completed === true);
+        this.todoService.getTodos().subscribe(todos => {
+            this.cardTodos = todos.filter(obj => obj.cardId === this.card.id);
+            this.cardCompletedChecks = this.cardTodos.filter(obj => obj.completed === true);
+        });
 
         this.firstDate = new Date(this.card.startDate);
         this.lastDate = new Date(this.card.dueDate);
-        this.estimatedTime = this.setEstimatedTime(this.firstDate, this.lastDate);
-        this.spentTime = this.setSpentTime(this.dateNow, this.firstDate);
-        this.remainingTime = this.setRemainingTime(this.dateNow, this.lastDate);
+
+        this.card.estimated = this.setEstimatedTime(this.firstDate, this.lastDate);
+        this.card.spent = this.setSpentTime(this.dateNow, this.firstDate);
+        this.card.remaining = this.setRemainingTime(this.dateNow, this.lastDate);
 
         this.dateForm = this.formBuilder.group({
             startDate: ['', [Validators.required]],
@@ -90,15 +93,32 @@ export class CardItemComponent {
     }
 
     saveCardTitle() {
-        this.card.title = this.titleForm.value.title;
-        this.cardTitle = false;
+        let obj: Object = {
+            id: this.card.id,
+            title: this.titleForm.value.title
+        };
+        this.cardService.changeCardTitle(this.card, obj)
+            .subscribe(
+                res => {
+                    this.card.title = this.titleForm.value.title;
+                    this.cardTitle = false;
+                }
+            );
 
     }
 
     saveCardDescription() {
-        this.card.description = this.descriptionForm.value.description;
-        this.cardDescription = false;
-        console.log(this.card.description)
+        let obj: Object = {
+            id: this.card.id,
+            description: this.titleForm.value.description
+        };
+        this.cardService.changeCardDescription(this.card, obj)
+            .subscribe(
+                res => {
+                    this.card.description = this.descriptionForm.value.description;
+                    this.cardDescription = false;
+                }
+            );
     }
 
     clearCardTitle() {
@@ -114,7 +134,6 @@ export class CardItemComponent {
     }
 
     saveCardDatesTimes() {
-        this.cardDatesTimes = false;
         console.log(this.dateForm.value);
 
         this.card.startDate = this.dateForm.value.startDate;
@@ -123,9 +142,22 @@ export class CardItemComponent {
         let startDate = new Date(this.card.startDate);
         let dueDate = new Date(this.card.dueDate);
 
-        this.setEstimatedTime(startDate, dueDate);
-        this.setSpentTime(this.dateNow, startDate);
-        this.setRemainingTime(this.dateNow, dueDate);
+        let obj: Object = {
+            id: this.card.id,
+            estimated : this.setEstimatedTime(startDate, dueDate),
+            spent : this.setSpentTime(this.dateNow, startDate),
+            remaining : this.setRemainingTime(this.dateNow, dueDate)
+        };
+        this.cardService.changeCardDatesTimes(this.card, obj)
+            .subscribe(
+                res => {
+                    this.card.estimated = this.setEstimatedTime(startDate, dueDate);
+                    this.card.spent = this.setSpentTime(this.dateNow, startDate);
+                    this.card.remaining = this.setRemainingTime(this.dateNow, dueDate);
+                    this.cardDatesTimes = false;
+                }
+            );
+
 
     }
 

@@ -54,7 +54,10 @@ export const CARDS: Card[] = [
         columnId: 1,
         description: '',
         startDate: '',
-        dueDate: ''
+        dueDate: '',
+        estimated: 0,
+        remaining: 0,
+        spent: 0
     },
     {
         id: 2,
@@ -62,7 +65,10 @@ export const CARDS: Card[] = [
         columnId: 1,
         description: '',
         startDate: '',
-        dueDate: ''
+        dueDate: '',
+        estimated: 0,
+        remaining: 0,
+        spent: 0
     },
     {
         id: 3,
@@ -70,23 +76,34 @@ export const CARDS: Card[] = [
         columnId: 2,
         description: 'Dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consequatur doloremque ea ',
         startDate: '2017-5-24',
-        dueDate: '2017-5-28'
+        dueDate: '2017-5-28',
+        estimated: 4,
+        remaining: 1,
+        spent: 3,
+
     },
     {
         id: 4,
         title: "Lorem  sfdgfgfd sadfsadf sdfsfdss",
         columnId: 2,
         description: '',
-        startDate: '',
-        dueDate: ''
+        startDate: '2017-5-23',
+        dueDate: '2017-5-31',
+        estimated: 8,
+        remaining: 4,
+        spent: 4,
+
     },
     {
         id: 5,
-        title: " nesciunt Lorem nobis obcaecati optio",
+        title: "Nesciunt Lorem nobis obcaecati optio",
         columnId: 3,
         description: '',
         startDate: '',
-        dueDate: ''
+        dueDate: '',
+        estimated: 0,
+        remaining: 0,
+        spent: 0
     },
     {
         id: 6,
@@ -94,7 +111,10 @@ export const CARDS: Card[] = [
         columnId: 6,
         description: '',
         startDate: '',
-        dueDate: ''
+        dueDate: '',
+        estimated: 0,
+        remaining: 0,
+        spent: 0
     },
     {
         id: 6,
@@ -102,7 +122,10 @@ export const CARDS: Card[] = [
         columnId: 5,
         description: '',
         startDate: '',
-        dueDate: ''
+        dueDate: '',
+        estimated: 0,
+        remaining: 0,
+        spent: 0
     }
 ];
 

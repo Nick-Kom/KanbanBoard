@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Todo} from './todo';
 import {TodoService} from './todo.service'
 import {Card} from "../card/card";
@@ -9,31 +9,33 @@ import {Card} from "../card/card";
 })
 export class TodoComponent {
     @Input() card: Card;
-    todos: Todo[];
+    todos: Todo[]  = [];
 
     constructor(private todoService: TodoService) {
     }
 
     ngOnInit() {
-        this.todos = this.todoService.getTodos().filter(obj => obj.cardId === this.card.id);
+        this.todoService.getTodos().subscribe((todos:Todo[]) => {
+            this.todos = todos.filter(obj => obj.cardId === this.card.id)
+        });
     }
 
     create(title: string) {
         let todo = new Todo(new Date().valueOf(), title, false, this.card.id);
-        this.todoService.createTodo(todo);
-        this.todos.push(todo);
-
+        this.todoService.createTodo(todo).subscribe(
+            todo => this.todos.push(todo)
+        );
     }
 
     delete(todo: Todo) {
-        let index = this.todos.indexOf(todo);
-        if (index > -1) {
-            this.todos.splice(index, 1);
-        }
-        this.todoService.deleteTodo(index)
+        this.todoService.deleteTodo(todo).subscribe(res => {
+            this.todos = this.todos.filter(item => item.id !== todo.id)
+        });
     } ;
 
     toggle(todo: Todo) {
-        this.todoService.toggleTodo(todo);
+        this.todoService.toggleTodo(todo).subscribe(res => {
+            todo.completed = !todo.completed;
+        });
     }
 }

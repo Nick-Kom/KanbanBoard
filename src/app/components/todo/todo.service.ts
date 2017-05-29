@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Todo} from './todo';
 import {Observable} from 'rxjs/Observable';
@@ -7,36 +6,53 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-import {TODOS} from "../mocks";
-
 
 @Injectable()
 export class TodoService {
-    private dataTodos: Todo[] = TODOS;
-    countTrue: number;
+    private apiUrl = 'api/todos';
 
     constructor(private  http: Http) {
     }
 
-    getTodos(): Todo[] {
-        return this.dataTodos;
+    getTodos(): Observable<Todo[]> {
+        return this.http.get(this.apiUrl)
+            .map(res => res.json().data)
+            .catch(this.handleError)
+    }
+
+    headersOptions() {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers});
+        return options
+
     }
 
     createTodo(todo: Todo) {
-        this.getTodos().push(todo)
-
+        return this.http.post(this.apiUrl, todo, this.headersOptions())
+            .map(res => res.json().data as Todo)
+            .catch(this.handleError)
     }
 
-    deleteTodo(index:number) {
-        if (index > -1) {
-            this.dataTodos.splice(index, 1);
-        }
+    deleteTodo(todo: Todo) {
+        let url = `${this.apiUrl}/${todo.id}`;
+        return this.http.delete(url, this.headersOptions())
+            .map((data: any) => {
+                console.log(data)
+            })
+            .catch(this.handleError);
+
     }
 
     toggleTodo(todo: Todo) {
-        todo.completed = !todo.completed;
-        this.countTrue = this.dataTodos.filter(obj => obj.completed === true).length
-        console.log(this.countTrue)
+        let url = `${this.apiUrl}/${todo.id}`;
+        return this.http.put(url, todo, this.headersOptions())
+            .catch(this.handleError);
     }
+
+    private handleError(error: any) {
+        console.error('Error occured', error);
+        return Observable.throw(error.message || error);
+    }
+
 
 }

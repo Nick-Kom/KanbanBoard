@@ -1,3 +1,14 @@
+
+<div class="time-tracking" *ngIf="sumEstimatedTime.estimated">
+    <div class="row text-center">
+        <div class="col title">ESTIMATED TIME</div>
+        <div class="col title">REMAINING TIME</div>
+    </div>
+    <div class="row text-center ">
+        <i class="col ">{{sumEstimatedTime.estimated}} days</i>
+        <i class="col ">{{sumRemainingTime.remaining}} days</i>
+    </div>
+</div>
 <card-list [cards]="cards" [dragula]='"bag-one"'
            (onSaveCard)="saveCardTitle($event)"
            (onDeleteCard)="deleteCard($event)">

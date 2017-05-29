@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from "@angular/material";
+import {FormsModule} from "@angular/forms";
 import {TodoService} from "../todo.service";
 import {TodoItemComponent} from "./todo-item.component";
-import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
     imports: [

@@ -8,6 +8,8 @@ import '@angular/router';
 
 
 import 'rxjs';
+import '../node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js';
+
 import 'hammerjs';
 import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 import '../node_modules/jquery/dist/jquery.js';

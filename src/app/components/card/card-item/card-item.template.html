@@ -1,24 +1,24 @@
 <md-card id="1{{card.id}}" class="mdcard-style" data-toggle="modal" [attr.data-target]="'#' + card.id">
     <p>{{card.title}}</p>
     <div class="time-tracking"
-         *ngIf="!estimatedTime == 0">
-        <div class="row">
+         *ngIf="!card.estimated == 0">
+        <div class="row text-center">
             <div class="col title">ESTIMATED</div>
             <div class="col title">SPENT</div>
             <div class="col title">REMAINING</div>
         </div>
-        <div class="row ">
-            <i class="col">{{estimatedTime}} days</i>
-            <i class="col">{{spentTime}} days</i>
-            <i class="col">{{remainingTime}} days</i>
+        <div class="row text-center">
+            <i class="col">{{card.estimated}} days</i>
+            <i class="col">{{card.spent}} days</i>
+            <i class="col">{{card.remaining}} days</i>
         </div>
     </div>
-    <div class="checks" *ngIf="cardTodos.length">
-        <md-icon class="checks-icon">
-            check_box
-        </md-icon>
-        <i class="checks-count">{{cardCompletedChecks.length}}/{{cardTodos.length}}</i>
-    </div>
+        <div class="checks" *ngIf="cardTodos.length">
+            <md-icon class="checks-icon">
+                check_box
+            </md-icon>
+            <i class="checks-count">{{cardCompletedChecks.length}}/{{cardTodos.length}}</i>
+        </div>
 </md-card>
 <!-- Modal -->
 <div class="modal fade"

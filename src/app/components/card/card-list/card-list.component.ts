@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Card} from "../card";
 import {CardService} from "../card.service";
 import {DragulaService} from "ng2-dragula";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
     selector: 'card-list',

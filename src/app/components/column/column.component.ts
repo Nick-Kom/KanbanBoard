@@ -10,29 +10,30 @@ import {Board} from "../board/board";
 })
 export class ColumnComponent {
     @Input() board: Board;
-    columns: Column[];
+    columns: Column[] = [];
 
     constructor(private columnService: ColumnService) {
 
     }
 
     ngOnInit() {
-        this.columns = this.columnService.getDataColumns()
-            .filter(obj => obj.boardId === this.board.id);
+        this.columnService.getDataColumns()
+            .subscribe((columns: Column[]) => {
+                this.columns = columns.filter(obj => obj.boardId === this.board.id);
+            });
     }
 
-    saveColumn(title: string) {
+    createColumn(title: string) {
         let newColumn = new Column(new Date().valueOf(), title, this.board.id);
-        this.columns.push(newColumn);
-        this.columnService.createColumn(newColumn);
+        this.columnService.createColumn(newColumn).subscribe(
+            res => this.columns.push(newColumn)
+        );
     }
 
     deleteColumn(column: Column) {
-        let indexToRemove = this.columns.indexOf(column);
-        if (indexToRemove > -1) {
-            this.columns.splice(indexToRemove, 1);
-        }
-        this.columnService.deleteColumn(column);
+        this.columnService.deleteColumn(column).subscribe(res => {
+            this.columns = this.columns.filter(item => item.id !== column.id)
+        });
     }
 
 }
