@@ -8,7 +8,7 @@ import {BoardService} from "../board.service";
 @Component({
     selector: 'board-item',
     templateUrl: 'board-item.template.html',
-    styleUrls: ['board-item.less']
+    styleUrls: ['board-item.less', '../../../styles/alert.less']
 })
 export class BoardItemComponent {
     @Input() board: Board;
@@ -23,7 +23,11 @@ export class BoardItemComponent {
 
     ngOnInit() {
         this.titleForm = this.formBuilder.group({
-            title: [this.board ? this.board.title : '', [Validators.required]]
+            title: [this.board ? this.board.title : '',
+                [Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(40)
+                ]]
         });
     }
 

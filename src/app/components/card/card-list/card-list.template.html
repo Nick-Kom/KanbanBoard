@@ -14,9 +14,12 @@
 
         <md-card class="mdcard-style">
             <input class="card-title-input"
-                   autofocus="autofocus"
                    placeholder="card title..."
                    formControlName="title">
+            <md-card class="alert" *ngIf="!titleForm.controls['title'].valid
+                        && titleForm.controls['title'].touched">
+                You must specify title between 3 and 40 characters
+            </md-card>
             <div class="btn-row">
                 <button class="btn-row-save"
                         md-button

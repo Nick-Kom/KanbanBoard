@@ -26,6 +26,10 @@
                         <md-icon class="clear-icon">clear</md-icon>
                     </button>
                 </div>
+                <md-card class="alert" *ngIf="!titleForm.controls['title'].valid
+                        && titleForm.controls['title'].touched">
+                    You must specify title between 3 and 40 characters
+                </md-card>
             </div>
         </div>
     </form>

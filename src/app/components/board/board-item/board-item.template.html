@@ -13,12 +13,12 @@
                                placeholder="Board title"
                                formControlName="title">
                     </md-input-container>
+
                     <h2 class="board-title-h2"
                         *ngIf="changeTitle ">
                         {{board.title}}
                     </h2>
                 </div>
-
                 <div class="col col-3 col-md-6 col-lg-4 ">
                     <div class="board-title-buttons">
                         <button *ngIf="!changeTitle || !board.title  "
@@ -37,6 +37,12 @@
                             <md-icon>delete</md-icon>
                         </button>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <md-card class="alert" *ngIf="!titleForm.controls['title'].valid
+                        && titleForm.controls['title'].touched">
+                        You must specify title between 3 and 40 characters
+                    </md-card>
                 </div>
             </div>
         </form>

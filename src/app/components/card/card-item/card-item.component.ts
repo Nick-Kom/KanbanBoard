@@ -11,7 +11,7 @@ import {TodoService} from "../../todo/todo.service";
 @Component({
     selector: 'card-item',
     templateUrl: 'card-item.template.html',
-    styleUrls: ['card-item.less']
+    styleUrls: ['card-item.less', '../../../styles/alert.less']
 })
 export class CardItemComponent {
     @Input() card: Card;
@@ -60,10 +60,18 @@ export class CardItemComponent {
         });
 
         this.titleForm = this.formBuilder.group({
-            title: [this.card ? this.card.title : '', [Validators.required]]
+            title: [this.card ? this.card.title : '',
+                [Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(40)
+                ]]
         });
         this.descriptionForm = this.formBuilder.group({
-            description: [this.card ? this.card.description : '', [Validators.required]]
+            description: [this.card ? this.card.description : '',
+                [Validators.required,
+                    Validators.minLength(10),
+                    Validators.maxLength(500)
+                ]]
         });
     }
 
@@ -144,9 +152,9 @@ export class CardItemComponent {
 
         let obj: Object = {
             id: this.card.id,
-            estimated : this.setEstimatedTime(startDate, dueDate),
-            spent : this.setSpentTime(this.dateNow, startDate),
-            remaining : this.setRemainingTime(this.dateNow, dueDate)
+            estimated: this.setEstimatedTime(startDate, dueDate),
+            spent: this.setSpentTime(this.dateNow, startDate),
+            remaining: this.setRemainingTime(this.dateNow, dueDate)
         };
         this.cardService.changeCardDatesTimes(this.card, obj)
             .subscribe(

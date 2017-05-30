@@ -8,7 +8,7 @@ import {DragulaService} from "ng2-dragula";
 @Component({
     selector: 'card-list',
     templateUrl: 'card-list.template.html',
-    styleUrls: ['card-list.less']
+    styleUrls: ['card-list.less', '../../../styles/alert.less']
 })
 export class CardListComponent {
     @Input() cards: Card[];
@@ -44,7 +44,11 @@ export class CardListComponent {
 
     ngOnInit() {
         this.titleForm = this.formBuilder.group({
-            title: ['', [Validators.required]]
+            title: ['',
+                [
+                    Validators.minLength(3),
+                    Validators.maxLength(40)
+                ]]
         });
     }
 

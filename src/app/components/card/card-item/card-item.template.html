@@ -13,12 +13,12 @@
             <i class="col">{{card.remaining}} days</i>
         </div>
     </div>
-        <div class="checks" *ngIf="cardTodos.length">
-            <md-icon class="checks-icon">
-                check_box
-            </md-icon>
-            <i class="checks-count">{{cardCompletedChecks.length}}/{{cardTodos.length}}</i>
-        </div>
+    <div class="checks" *ngIf="cardTodos.length">
+        <md-icon class="checks-icon">
+            check_box
+        </md-icon>
+        <i class="checks-count">{{cardCompletedChecks.length}}/{{cardTodos.length}}</i>
+    </div>
 </md-card>
 <!-- Modal -->
 <div class="modal fade"
@@ -77,6 +77,10 @@
                                     placeholder="TITLE"
                                     formControlName="title">
                         </md-input-container>
+                        <md-card class="alert" *ngIf="!titleForm.controls['title'].valid
+                        && titleForm.controls['title'].touched">
+                            You must specify title between 3 and 40 characters
+                        </md-card>
                         <div class="btn-row">
                             <button class="btn-row-save"
                                     md-raised-button
@@ -113,6 +117,11 @@
 
                             </textarea>
                         </md-input-container>
+                        <md-card class="alert"
+                                 *ngIf="!descriptionForm.controls['description'].valid
+                                     && descriptionForm.controls['description'].touched">
+                            You must specify description between 10 and 500 characters
+                        </md-card>
                         <div class="btn-row">
                             <button class="btn-row-save"
                                     md-raised-button

@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 @Component({
     selector: 'todo-form',
     templateUrl: 'todo-form.component.html',
-    styleUrls: ['todo-form.component.less']
+    styleUrls: ['todo-form.component.less', '../../../styles/alert.less']
 })
 export class TodoFormComponent {
     title: string = '';
@@ -17,7 +17,11 @@ export class TodoFormComponent {
 
     ngOnInit() {
         this.titleForm = this.formBuilder.group({
-            title: ['', [Validators.required]]
+            title: ['',
+                [
+                    Validators.minLength(3),
+                    Validators.maxLength(40)
+                ]]
         });
     }
 

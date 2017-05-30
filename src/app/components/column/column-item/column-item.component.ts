@@ -8,7 +8,7 @@ import {ColumnService} from "../column.service";
 @Component({
     selector: 'column-item',
     templateUrl: 'column-item.template.html',
-    styleUrls: ['column-item.less']
+    styleUrls: ['column-item.less', '../../../styles/alert.less']
 })
 export class ColumnItemComponent {
     @Input() column: Column;
@@ -23,7 +23,11 @@ export class ColumnItemComponent {
 
     ngOnInit() {
         this.titleForm = this.formBuilder.group({
-            title: [this.column ? this.column.title : '', [Validators.required]]
+            title: [this.column ? this.column.title : '',
+                [Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(40)
+                ]]
         });
     }
 
